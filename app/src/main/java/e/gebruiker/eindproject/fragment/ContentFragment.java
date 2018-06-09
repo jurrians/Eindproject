@@ -1,6 +1,9 @@
 package e.gebruiker.eindproject.fragment;
 
-import android.content.Context;
+/**
+ * Created by delaroystudios on 9/7/2016.
+ */
+
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.os.Bundle;
@@ -14,13 +17,18 @@ import android.widget.ImageView;
 import e.gebruiker.eindproject.R;
 import yalantis.com.sidemenu.interfaces.ScreenShotable;
 
+/**
+ * Created by Konstantin on 22.12.2014.
+ */
 public class ContentFragment extends Fragment implements ScreenShotable {
     public static final String CLOSE = "Close";
-    public static final String BALANCE = "Balance";
-    public static final String INCOME = "Income";
-    public static final String TRANSACTIONS = "Transactions";
-    public static final String HISTORY = "History";
-    public static final String ACCOUNTS = "Accounts";
+    public static final String BUILDING = "Building";
+    public static final String BOOK = "Book";
+    public static final String PAINT = "Paint";
+    public static final String CASE = "Case";
+    public static final String SHOP = "Shop";
+    public static final String PARTY = "Party";
+    public static final String MOVIE = "Movie";
 
     private View containerView;
     protected ImageView mImageView;
@@ -34,6 +42,7 @@ public class ContentFragment extends Fragment implements ScreenShotable {
         contentFragment.setArguments(bundle);
         return contentFragment;
     }
+
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
@@ -50,8 +59,8 @@ public class ContentFragment extends Fragment implements ScreenShotable {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.fragment_balance, container, false);
-        mImageView = rootView.findViewById(R.id.image_content);
+        View rootView = inflater.inflate(R.layout.fragment_main, container, false);
+        mImageView = (ImageView) rootView.findViewById(R.id.image_content);
         mImageView.setClickable(true);
         mImageView.setFocusable(true);
         mImageView.setImageResource(res);
@@ -64,7 +73,7 @@ public class ContentFragment extends Fragment implements ScreenShotable {
             @Override
             public void run() {
                 Bitmap bitmap = Bitmap.createBitmap(containerView.getWidth(),
-                                containerView.getHeight(), Bitmap.Config.ARGB_8888);
+                        containerView.getHeight(), Bitmap.Config.ARGB_8888);
                 Canvas canvas = new Canvas(bitmap);
                 containerView.draw(canvas);
                 ContentFragment.this.bitmap = bitmap;
@@ -72,12 +81,12 @@ public class ContentFragment extends Fragment implements ScreenShotable {
         };
 
         thread.start();
+
     }
 
     @Override
     public Bitmap getBitmap() {
         return bitmap;
     }
-
-
 }
+
