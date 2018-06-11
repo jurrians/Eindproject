@@ -27,24 +27,24 @@
             android:layout_height="wrap_content"
             android:layout_width="match_parent"
             android:minHeight="?attr/actionBarSize"
-            android:background="?attr/colorPrimary"/>
+            android:background="?attr/colorPrimary"
+            android:visibility="gone"/>
 
     </io.codetail.widget.RevealFrameLayout>
 
     <ScrollView
         android:id="@+id/scrollView"
-        android:scrollbarThumbVertical="@android:color/transparent"
         android:layout_width="@dimen/sliding_menu_width"
-        android:layout_height="match_parent"
-        android:layout_gravity="start|bottom">
+        android:layout_height="400dp"
+        android:layout_gravity="start|center"
+        android:scrollbarThumbVertical="@android:color/transparent">
 
         <LinearLayout
             android:id="@+id/left_drawer"
-            android:orientation="vertical"
             android:layout_width="@dimen/sliding_menu_width"
             android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
             android:divider="@android:color/transparent"
-            android:background="@android:color/transparent">
-        </LinearLayout>
+            android:orientation="vertical"></LinearLayout>
     </ScrollView>
 </android.support.v4.widget.DrawerLayout>
