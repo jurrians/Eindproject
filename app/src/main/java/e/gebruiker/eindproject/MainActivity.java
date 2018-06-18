@@ -2,8 +2,9 @@ package e.gebruiker.eindproject;
 
 import android.content.res.Configuration;
 import android.graphics.Color;
-import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
+import android.support.v4.app.Fragment;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -17,6 +18,11 @@ import android.widget.LinearLayout;
 import java.util.ArrayList;
 import java.util.List;
 
+import e.gebruiker.eindproject.fragment.AddCategoryFragment;
+import e.gebruiker.eindproject.fragment.BalanceFragment;
+import e.gebruiker.eindproject.fragment.HistoryFragment;
+import e.gebruiker.eindproject.fragment.IncomeFragment;
+import e.gebruiker.eindproject.fragment.TransactionsFragment;
 import io.codetail.animation.SupportAnimator;
 import io.codetail.animation.ViewAnimationUtils;
 import yalantis.com.sidemenu.interfaces.Resourceble;
@@ -32,7 +38,7 @@ public class MainActivity extends ActionBarActivity implements ViewAnimator.View
     private List<SlideMenuItem> list = new ArrayList<>();
     private ContentFragment contentFragment;
     private ViewAnimator viewAnimator;
-    private int res = R.drawable.content_music;
+//    private int res = R.drawable.content_music;
     private LinearLayout linearLayout;
 
 
@@ -44,6 +50,7 @@ public class MainActivity extends ActionBarActivity implements ViewAnimator.View
         getSupportFragmentManager().beginTransaction()
                 .replace(R.id.content_frame, contentFragment)
                 .commit();
+
         drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawerLayout.setScrimColor(Color.TRANSPARENT);
         linearLayout = (LinearLayout) findViewById(R.id.left_drawer);
@@ -53,6 +60,17 @@ public class MainActivity extends ActionBarActivity implements ViewAnimator.View
                 drawerLayout.closeDrawers();
             }
         });
+
+//        FloatingActionButton addCategoryButton = (FloatingActionButton) findViewById(R.id.floatingBalanceButton);
+//
+//        addCategoryButton.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Fragment addCategoryFragment = new AddCategoryFragment();
+//                getSupportFragmentManager().beginTransaction()
+//                        .replace(R.id.content_frame, addCategoryFragment).commit();
+//            }
+//        });
 
 
         setActionBar();
@@ -143,19 +161,87 @@ public class MainActivity extends ActionBarActivity implements ViewAnimator.View
         }
     }
 
-    private ScreenShotable replaceFragment(ScreenShotable screenShotable, int topPosition) {
-        this.res = this.res == R.drawable.content_music ? R.drawable.content_films : R.drawable.content_music;
+//    private ScreenShotable replaceFragment(ScreenShotable screenShotable, int topPosition) {
+//        this.res = this.res == R.drawable.content_music ? R.drawable.content_films : R.drawable.content_music;
+//        View view = findViewById(R.id.content_frame);
+//        int finalRadius = Math.max(view.getWidth(), view.getHeight());
+//        SupportAnimator animator = ViewAnimationUtils.createCircularReveal(view, 0, topPosition, 0, finalRadius);
+//        animator.setInterpolator(new AccelerateInterpolator());
+//        animator.setDuration(ViewAnimator.CIRCULAR_REVEAL_ANIMATION_DURATION);
+//
+//        findViewById(R.id.content_overlay).setBackgroundDrawable(new BitmapDrawable(getResources(), screenShotable.getBitmap()));
+//        animator.start();
+//        ContentFragment contentFragment = ContentFragment.newInstance(this.res);
+//        getSupportFragmentManager().beginTransaction().replace(R.id.content_frame, contentFragment).commit();
+//        return contentFragment;
+//    }
+
+
+    private ScreenShotable replaceCurrentFragment(ScreenShotable screenShotable) {
+        return screenShotable;
+    }
+
+
+
+    // replaceBalance
+    private ScreenShotable replaceBalanceFragment(ScreenShotable screenShotable, int topPosition) {
         View view = findViewById(R.id.content_frame);
         int finalRadius = Math.max(view.getWidth(), view.getHeight());
         SupportAnimator animator = ViewAnimationUtils.createCircularReveal(view, 0, topPosition, 0, finalRadius);
         animator.setInterpolator(new AccelerateInterpolator());
         animator.setDuration(ViewAnimator.CIRCULAR_REVEAL_ANIMATION_DURATION);
 
-        findViewById(R.id.content_overlay).setBackgroundDrawable(new BitmapDrawable(getResources(), screenShotable.getBitmap()));
         animator.start();
-        ContentFragment contentFragment = ContentFragment.newInstance(this.res);
-        getSupportFragmentManager().beginTransaction().replace(R.id.content_frame, contentFragment).commit();
-        return contentFragment;
+        BalanceFragment balanceFragment = new BalanceFragment();
+        getSupportFragmentManager().beginTransaction()
+                .replace(R.id.content_frame, balanceFragment).commit();
+        return balanceFragment;
+    }
+
+    // replaceTransactions
+    private ScreenShotable replaceTransactionsFragment(ScreenShotable screenShotable, int topPosition) {
+        View view = findViewById(R.id.content_frame);
+        int finalRadius = Math.max(view.getWidth(), view.getHeight());
+        SupportAnimator animator = ViewAnimationUtils.createCircularReveal(view, 0, topPosition, 0, finalRadius);
+        animator.setInterpolator(new AccelerateInterpolator());
+        animator.setDuration(ViewAnimator.CIRCULAR_REVEAL_ANIMATION_DURATION);
+
+        animator.start();
+        TransactionsFragment transactionsFragment = new TransactionsFragment();
+        getSupportFragmentManager().beginTransaction()
+                .replace(R.id.content_frame, transactionsFragment).commit();
+        return transactionsFragment;
+    }
+
+    // replaceIncome
+    private ScreenShotable replaceIncomeFragment(ScreenShotable screenShotable, int topPosition) {
+        View view = findViewById(R.id.content_frame);
+        int finalRadius = Math.max(view.getWidth(), view.getHeight());
+        SupportAnimator animator = ViewAnimationUtils.createCircularReveal(view, 0, topPosition, 0, finalRadius);
+        animator.setInterpolator(new AccelerateInterpolator());
+        animator.setDuration(ViewAnimator.CIRCULAR_REVEAL_ANIMATION_DURATION);
+
+        animator.start();
+        IncomeFragment incomeFragment = new IncomeFragment();
+        getSupportFragmentManager().beginTransaction()
+                .replace(R.id.content_frame, incomeFragment).commit();
+        return incomeFragment;
+    }
+
+    // replaceHistory
+    private ScreenShotable replaceHistoryFragment(ScreenShotable screenShotable, int topPosition) {
+        View view = findViewById(R.id.content_frame);
+        int finalRadius = Math.max(view.getWidth(), view.getHeight());
+        SupportAnimator animator = ViewAnimationUtils.createCircularReveal(view, 0, topPosition, 0, finalRadius);
+        animator.setInterpolator(new AccelerateInterpolator());
+        animator.setDuration(ViewAnimator.CIRCULAR_REVEAL_ANIMATION_DURATION);
+
+//        findViewById(R.id.content_overlay).setBackgroundDrawable(new BitmapDrawable(getResources(), screenShotable.getBitmap()));
+        animator.start();
+        HistoryFragment historyFragment = new HistoryFragment();
+        getSupportFragmentManager().beginTransaction()
+                .replace(R.id.content_frame, historyFragment).commit();
+        return historyFragment;
     }
 
 
@@ -163,13 +249,39 @@ public class MainActivity extends ActionBarActivity implements ViewAnimator.View
 
 
 
+//
+//    @Override
+//    public ScreenShotable onSwitch(Resourceble slideMenuItem, ScreenShotable screenShotable, int position) {
+//        switch (slideMenuItem.getName()) {
+//            case ContentFragment.CLOSE:
+//                return screenShotable;
+//            default:
+//                return replaceFragment(screenShotable, position);
+//        }
+//    }
+
     @Override
     public ScreenShotable onSwitch(Resourceble slideMenuItem, ScreenShotable screenShotable, int position) {
         switch (slideMenuItem.getName()) {
-            case ContentFragment.CLOSE:
-                return screenShotable;
+//            case ContentFragment.CLOSE:
+//
+//                //    public void onDrawerClosed(View view) {
+//                //        super.onDrawerClosed(view);
+//                //        linearLayout.removeAllViews();
+//                //        linearLayout.invalidate();
+//                //    }
+//
+//                return replaceBalanceFragment(screenShotable, position);
+            case ContentFragment.BALANCE:
+                return replaceBalanceFragment(screenShotable, position);
+            case ContentFragment.TRANSACTIONS:
+                return replaceTransactionsFragment(screenShotable, position);
+            case ContentFragment.INCOME:
+                return replaceIncomeFragment(screenShotable, position);
+            case ContentFragment.HISTORY:
+                return replaceHistoryFragment(screenShotable, position);
             default:
-                return replaceFragment(screenShotable, position);
+                return replaceCurrentFragment(screenShotable);
         }
     }
 

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".fragment.BalanceFragment">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="30sp"
+        android:gravity="center"
+        android:layout_marginTop="253dp"
+
+        android:text="BALANCE FRAGMENT" />
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/floatingBalanceButton"
+        android:layout_width="66dp"
+        android:layout_height="56dp"
+        android:layout_gravity="bottom|right"
+        android:layout_marginBottom="20dp"
+        android:layout_marginRight="20dp"
+        android:clickable="true"
+        android:onClick="onAddCategoryClick"
+        android:src="@drawable/icn_income" />
+
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="729dp" />
+
+</FrameLayout>

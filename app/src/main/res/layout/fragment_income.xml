@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".fragment.IncomeFragment">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="30sp"
+        android:gravity="center"
+        android:layout_marginTop="253dp"
+
+        android:text="INCOME FRAGMENT" />
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/floatingIncomeButton"
+        android:layout_width="66dp"
+        android:layout_height="56dp"
+        android:layout_gravity="bottom|right"
+        android:layout_marginBottom="20dp"
+        android:layout_marginRight="20dp"
+        android:clickable="true"
+        android:src="@drawable/icn_income" />
+
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="729dp" />
+
+</FrameLayout>

@@ -9,12 +9,28 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <ImageView
-            android:scaleType="fitXY"
-            android:id="@+id/image_content"
-            android:src="@drawable/content_films"
+
+        <TextView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
+            android:layout_height="wrap_content"
+            android:textSize="30sp"
+            android:gravity="center"
+            android:layout_marginTop="180dp"
+
+            android:text="MAIN FRAGMENT"
+            />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="320dp"
+            android:gravity="center"
+
+
+            android:text="SLIDE FROM LEFT SIDE OF THE SCREEN TO OPEN THE MENU"
+
+            android:textSize="30sp" />
+
 
     </FrameLayout>
 </io.codetail.widget.RevealFrameLayout>
