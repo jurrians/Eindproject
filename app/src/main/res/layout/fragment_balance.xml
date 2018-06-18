@@ -23,7 +23,6 @@
         android:layout_marginBottom="20dp"
         android:layout_marginRight="20dp"
         android:clickable="true"
-        android:onClick="onAddCategoryClick"
         android:src="@drawable/icn_income" />
 
     <ListView

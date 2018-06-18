@@ -9,6 +9,7 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -61,16 +62,17 @@ public class MainActivity extends ActionBarActivity implements ViewAnimator.View
             }
         });
 
-//        FloatingActionButton addCategoryButton = (FloatingActionButton) findViewById(R.id.floatingBalanceButton);
-//
-//        addCategoryButton.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Fragment addCategoryFragment = new AddCategoryFragment();
-//                getSupportFragmentManager().beginTransaction()
-//                        .replace(R.id.content_frame, addCategoryFragment).commit();
-//            }
-//        });
+
+
+
+
+
+
+
+
+
+
+
 
 
         setActionBar();
