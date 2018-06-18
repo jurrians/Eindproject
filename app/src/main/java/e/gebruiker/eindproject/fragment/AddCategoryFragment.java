@@ -29,8 +29,6 @@ public class AddCategoryFragment extends Fragment implements ScreenShotable{
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_balance, container, false);
-
-
         return rootView;
     }
 

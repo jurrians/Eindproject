@@ -8,7 +8,10 @@ import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -33,6 +36,7 @@ public class ContentFragment extends Fragment implements ScreenShotable {
     protected int res;
     private Bitmap bitmap;
 
+
     public static ContentFragment newInstance(int resId) {
         ContentFragment contentFragment = new ContentFragment();
         Bundle bundle = new Bundle();
@@ -52,16 +56,38 @@ public class ContentFragment extends Fragment implements ScreenShotable {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         res = getArguments().getInt(Integer.class.getName());
+
+
+
+
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_main, container, false);
+
+
+
+
 //        mImageView = (ImageView) rootView.findViewById(R.id.image_content);
 //        mImageView.setClickable(true);
 //        mImageView.setFocusable(true);
 //        mImageView.setImageResource(res);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         return rootView;
     }
 
