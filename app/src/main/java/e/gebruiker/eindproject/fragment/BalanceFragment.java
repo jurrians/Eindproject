@@ -11,13 +11,17 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.AccelerateInterpolator;
 import android.widget.ImageView;
 
 
 
 import e.gebruiker.eindproject.R;
 
+import io.codetail.animation.SupportAnimator;
+import io.codetail.animation.ViewAnimationUtils;
 import yalantis.com.sidemenu.interfaces.ScreenShotable;
+import yalantis.com.sidemenu.util.ViewAnimator;
 
 public class BalanceFragment extends Fragment implements ScreenShotable{
 
@@ -26,47 +30,37 @@ public class BalanceFragment extends Fragment implements ScreenShotable{
     protected int res;
     private Bitmap bitmap;
 
-    private FloatingActionButton addCategoryButton;
-
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         final View rootView = inflater.inflate(R.layout.fragment_balance, container, false);
 
-//
-//        addCategoryButton = (FloatingActionButton) getActivity().findViewById(R.id.floatingBalanceButton);
-//        addCategoryButton.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                AddCategoryFragment addCategoryFragment = new AddCategoryFragment();
-//
-//                getActivity().getSupportFragmentManager().beginTransaction()
-//                        .replace(view.getId(), addCategoryFragment).commit();
-//                return; addCategoryFragment;
-//            }
-//        });
+        final FloatingActionButton addCategoryButton = (FloatingActionButton) rootView.findViewById(R.id.floatingBalanceButton);
 
+        addCategoryButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Log.d("click", "click");
+                replaceAddCategoryFragment();
+            }
+        });
 
         return rootView;
     }
 
+    private ScreenShotable replaceAddCategoryFragment() {
+        View view = getActivity().findViewById(R.id.content_frame);
+        int finalRadius = Math.max(view.getWidth(), view.getHeight());
+        SupportAnimator animator = ViewAnimationUtils.createCircularReveal(view, 0, 0, 0, finalRadius);
+        animator.setInterpolator(new AccelerateInterpolator());
+        animator.setDuration(ViewAnimator.CIRCULAR_REVEAL_ANIMATION_DURATION);
 
-//    public void onAddBalanceButtonClick(View view){
-//
-//        AddCategoryFragment addCategoryFragment = new AddCategoryFragment();
-//
-//        getActivity().getSupportFragmentManager().beginTransaction()
-//                .replace(R.id.content_frame, addCategoryFragment).commit();
-//
-//        //        AddCategoryFragment addCategoryFragment = new AddCategoryFragment();
-////
-////        FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
-////        transaction.replace(R.id.content_frame, addCategoryFragment);
-////        transaction.commit();
-//
-//    }
-
+        animator.start();
+        AddCategoryFragment addCategoryFragment = new AddCategoryFragment();
+        getActivity().getSupportFragmentManager().beginTransaction()
+                .replace(R.id.content_frame, addCategoryFragment, "ADD_CATEGORY").addToBackStack(null).commit();
+        return addCategoryFragment;
+    }
 
 
 
@@ -80,27 +74,6 @@ public class BalanceFragment extends Fragment implements ScreenShotable{
     public Bitmap getBitmap() {
         return null;
     }
-
-
-//
-//    FloatingActionButton addCategoryButton = () findViewById(R.id.floatingBalanceButton);
-//    addCategoryButton.setOnClickListener(new View.OnClickListener() {
-//
-//    public void onClick(View view) {
-//        Log.d("click", "click");
-//
-//        AddCategoryFragment addCategoryFragment = new AddCategoryFragment();
-//
-//        FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
-//        transaction.replace(R.id.content_frame, addCategoryFragment);
-//        transaction.commit();
-//
-//        getActivity().getSupportFragmentManager().beginTransaction()
-//                .replace(R.id.content_frame, addCategoryFragment).commit();
-//
-//    }
-//    });
-
 
 
 }

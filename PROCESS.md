@@ -68,4 +68,16 @@ door elementen uit niet werkende deel --> app doet het weer!
 	notities uit kladblok in PROCESS.MD gezet. 
 
 
+# day 10 
+
+- uiteindelijk fragments addCategory en addIncome werkend gekregen
+- terugklikken bij alle fragments gefixt
+- backend (o.a. classes) en laatste deel front end voor een groot deel uitgewerkt; nog niet geschreven
+- ingelezen over ing api
+
+  ![](doc/aant_1\.jpg)
+  ![](doc/aant_2\.jpg)
+  ![](doc/aant_3\.jpg)
+
+- 
 

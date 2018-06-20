@@ -24,23 +24,19 @@ public class AddCategoryFragment extends Fragment implements ScreenShotable{
     protected int res;
     private Bitmap bitmap;
 
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.fragment_balance, container, false);
+        View rootView = inflater.inflate(R.layout.fragment_add_category, container, false);
         return rootView;
     }
 
-
     @Override
     public void takeScreenShot() {
-
     }
 
     @Override
     public Bitmap getBitmap() {
         return null;
     }
-
 }

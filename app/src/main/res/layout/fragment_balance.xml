@@ -24,7 +24,6 @@
         android:layout_marginRight="20dp"
         android:clickable="true"
         android:focusable="true"
-        android:onClick="onAddBalanceButtonClick"
         android:src="@drawable/icn_income" />
 
     <ListView

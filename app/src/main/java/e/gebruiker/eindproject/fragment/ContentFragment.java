@@ -1,9 +1,5 @@
 package e.gebruiker.eindproject.fragment;
 
-/**
- * Created by delaroystudios on 9/7/2016.
- */
-
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.os.Bundle;
@@ -20,9 +16,6 @@ import android.widget.ImageView;
 import e.gebruiker.eindproject.R;
 import yalantis.com.sidemenu.interfaces.ScreenShotable;
 
-/**
- * Created by Konstantin on 22.12.2014.
- */
 public class ContentFragment extends Fragment implements ScreenShotable {
     public static final String CLOSE = "Close";
     public static final String BALANCE = "Balance";
@@ -56,37 +49,12 @@ public class ContentFragment extends Fragment implements ScreenShotable {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         res = getArguments().getInt(Integer.class.getName());
-
-
-
-
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_main, container, false);
-
-
-
-
-//        mImageView = (ImageView) rootView.findViewById(R.id.image_content);
-//        mImageView.setClickable(true);
-//        mImageView.setFocusable(true);
-//        mImageView.setImageResource(res);
-
-
-
-
-
-
-
-
-
-
-
-
-
 
         return rootView;
     }
