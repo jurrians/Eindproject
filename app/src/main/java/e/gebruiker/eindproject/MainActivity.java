@@ -28,6 +28,7 @@ import e.gebruiker.eindproject.fragment.BalanceFragment;
 import e.gebruiker.eindproject.fragment.HistoryFragment;
 import e.gebruiker.eindproject.fragment.IncomeFragment;
 import e.gebruiker.eindproject.fragment.TransactionsFragment;
+import e.gebruiker.eindproject.fragment.UserFragment;
 import io.codetail.animation.SupportAnimator;
 import io.codetail.animation.ViewAnimationUtils;
 import yalantis.com.sidemenu.interfaces.Resourceble;
@@ -77,14 +78,16 @@ public class MainActivity extends AppCompatActivity implements ViewAnimator.View
     private void createMenuList() {
         SlideMenuItem menuItem0 = new SlideMenuItem(ContentFragment.CLOSE, R.drawable.icn_close);
         list.add(menuItem0);
-        SlideMenuItem menuItem = new SlideMenuItem(ContentFragment.BALANCE, R.drawable.icn_balance);
-        list.add(menuItem);
-        SlideMenuItem menuItem2 = new SlideMenuItem(ContentFragment.TRANSACTIONS, R.drawable.icn_transactions);
+        SlideMenuItem menuItem1 = new SlideMenuItem(ContentFragment.USER, R.drawable.icn_user);
+        list.add(menuItem1);
+        SlideMenuItem menuItem2 = new SlideMenuItem(ContentFragment.BALANCE, R.drawable.icn_balance);
         list.add(menuItem2);
-        SlideMenuItem menuItem3 = new SlideMenuItem(ContentFragment.INCOME, R.drawable.icn_income);
+        SlideMenuItem menuItem3 = new SlideMenuItem(ContentFragment.TRANSACTIONS, R.drawable.icn_transactions);
         list.add(menuItem3);
-        SlideMenuItem menuItem4 = new SlideMenuItem(ContentFragment.HISTORY, R.drawable.icn_history);
+        SlideMenuItem menuItem4 = new SlideMenuItem(ContentFragment.INCOME, R.drawable.icn_income);
         list.add(menuItem4);
+        SlideMenuItem menuItem5 = new SlideMenuItem(ContentFragment.HISTORY, R.drawable.icn_history);
+        list.add(menuItem5);
 //        SlideMenuItem menuItem5 = new SlideMenuItem(ContentFragment.ACCOUNTS, R.drawable.icn_accounts);
 //        list.add(menuItem5);
     }
@@ -164,6 +167,23 @@ public class MainActivity extends AppCompatActivity implements ViewAnimator.View
 
 
 
+    // replaceUser
+    private ScreenShotable replaceUserFragment(int topPosition) {
+        View view = findViewById(R.id.content_frame);
+        int finalRadius = Math.max(view.getWidth(), view.getHeight());
+        SupportAnimator animator = ViewAnimationUtils.createCircularReveal(view, 0, topPosition, 0, finalRadius);
+        animator.setInterpolator(new AccelerateInterpolator());
+        animator.setDuration(ViewAnimator.CIRCULAR_REVEAL_ANIMATION_DURATION);
+
+        animator.start();
+
+        UserFragment userFragment = new UserFragment();
+        getSupportFragmentManager().beginTransaction()
+                .replace(R.id.content_frame, userFragment).addToBackStack(null).commit();
+        return userFragment;
+    }
+
+
     // replaceBalance
     private ScreenShotable replaceBalanceFragment(int topPosition) {
         View view = findViewById(R.id.content_frame);
@@ -227,6 +247,8 @@ public class MainActivity extends AppCompatActivity implements ViewAnimator.View
     @Override
     public ScreenShotable onSwitch(Resourceble slideMenuItem, ScreenShotable screenShotable, int position) {
         switch (slideMenuItem.getName()) {
+            case ContentFragment.USER:
+                return replaceUserFragment(position);
             case ContentFragment.BALANCE:
                 return replaceBalanceFragment(position);
             case ContentFragment.TRANSACTIONS:
