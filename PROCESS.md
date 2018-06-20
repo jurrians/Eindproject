@@ -75,9 +75,9 @@ door elementen uit niet werkende deel --> app doet het weer!
 - backend (o.a. classes) en laatste deel front end voor een groot deel uitgewerkt; nog niet geschreven
 - ingelezen over ing api
 
-  ![](doc/aant_1\.jpg)
-  ![](doc/aant_2\.jpg)
-  ![](doc/aant_3\.jpg)
+  ![](doc/aant_1.JPG)
+  ![](doc/aant_2.JPG)
+  ![](doc/aant_3.JPG)
 
 - 
 
