@@ -49,7 +49,6 @@ public class MainActivity extends AppCompatActivity implements ViewAnimator.View
 
     private FloatingActionButton addCategoryButton;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

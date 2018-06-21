@@ -79,5 +79,31 @@ door elementen uit niet werkende deel --> app doet het weer!
   ![](doc/aant_2.JPG)
   ![](doc/aant_3.JPG)
 
-- 
+# day 11
+
+- besloten van main een soort user-overzicht te maken
+- begin van uiteindelijke layout voor main/User gemaakt
+- besloten piggybank te maken
+- besloten history weg te laten en te vervangen met priority in side-menu
+	--> priority vrijwel zelfde layout en backend als income
+- besloten geen firebase maar SQL database te gebruiken
+- in principe definitieve plan voor app gemaakt:
+	- alle fragments die nodig zijn
+	- alle classes die nodig zijn
+		- alle variabelen binnen class
+		- alle functies binnen class
+	- welke fragments welke classes nodig hebben
+	- welke classes andere classes nodig hebben
+	- welke classes de API nodig hebben
+	- welke classes de sqlDatabase nodig hebben
+
+![](doc/aant_4.JPG)
+![](doc/aant_5.JPG)
+![](doc/aant_6.JPG)
+![](doc/aant_7.JPG)
+![](doc/aant_8.JPG)
+![](doc/aant_9.JPG)
+![](doc/aant_10.JPG)
+
+	
 
