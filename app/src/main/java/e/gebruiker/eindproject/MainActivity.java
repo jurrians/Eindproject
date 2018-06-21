@@ -4,10 +4,7 @@ import android.content.res.Configuration;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentTransaction;
 import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -20,13 +17,10 @@ import android.widget.LinearLayout;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Locale;
 
-import e.gebruiker.eindproject.fragment.AddCategoryFragment;
-import e.gebruiker.eindproject.fragment.AddIncomeFragment;
 import e.gebruiker.eindproject.fragment.BalanceFragment;
-import e.gebruiker.eindproject.fragment.HistoryFragment;
 import e.gebruiker.eindproject.fragment.IncomeFragment;
+import e.gebruiker.eindproject.fragment.PriorityFragment;
 import e.gebruiker.eindproject.fragment.TransactionsFragment;
 import e.gebruiker.eindproject.fragment.UserFragment;
 import io.codetail.animation.SupportAnimator;
@@ -34,7 +28,7 @@ import io.codetail.animation.ViewAnimationUtils;
 import yalantis.com.sidemenu.interfaces.Resourceble;
 import yalantis.com.sidemenu.interfaces.ScreenShotable;
 import yalantis.com.sidemenu.model.SlideMenuItem;
-import e.gebruiker.eindproject.fragment.ContentFragment;
+//import e.gebruiker.eindproject.fragment.UserFragment;
 import yalantis.com.sidemenu.util.ViewAnimator;
 
 
@@ -42,7 +36,8 @@ public class MainActivity extends AppCompatActivity implements ViewAnimator.View
     private DrawerLayout drawerLayout;
     private ActionBarDrawerToggle drawerToggle;
     private List<SlideMenuItem> list = new ArrayList<>();
-    private ContentFragment contentFragment;
+//    private ContentFragment contentFragment;
+    private UserFragment userFragment;
     private ViewAnimator viewAnimator;
     private LinearLayout linearLayout;
 
@@ -54,10 +49,17 @@ public class MainActivity extends AppCompatActivity implements ViewAnimator.View
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        contentFragment = ContentFragment.newInstance(R.layout.fragment_main);
+//        contentFragment = ContentFragment.newInstance(R.layout.fragment_main);
+//        getSupportFragmentManager().beginTransaction()
+//                .replace(R.id.content_frame, contentFragment)
+//                .commit();
+
+        userFragment = UserFragment.newInstance(R.layout.fragment_main);
         getSupportFragmentManager().beginTransaction()
-                .replace(R.id.content_frame, contentFragment)
+                .replace(R.id.content_frame, userFragment)
                 .commit();
+
+
 
         drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawerLayout.setScrimColor(Color.TRANSPARENT);
@@ -71,24 +73,22 @@ public class MainActivity extends AppCompatActivity implements ViewAnimator.View
 
         setActionBar();
         createMenuList();
-        viewAnimator = new ViewAnimator<>(this, list, contentFragment, drawerLayout, this);
+        viewAnimator = new ViewAnimator<>(this, list, userFragment, drawerLayout, this);
     }
 
     private void createMenuList() {
-        SlideMenuItem menuItem0 = new SlideMenuItem(ContentFragment.CLOSE, R.drawable.icn_close);
+        SlideMenuItem menuItem0 = new SlideMenuItem(UserFragment.CLOSE, R.drawable.icn_close);
         list.add(menuItem0);
-        SlideMenuItem menuItem1 = new SlideMenuItem(ContentFragment.USER, R.drawable.icn_user);
+        SlideMenuItem menuItem1 = new SlideMenuItem(UserFragment.USER, R.drawable.icn_user);
         list.add(menuItem1);
-        SlideMenuItem menuItem2 = new SlideMenuItem(ContentFragment.BALANCE, R.drawable.icn_balance);
+        SlideMenuItem menuItem2 = new SlideMenuItem(UserFragment.BALANCE, R.drawable.icn_balance);
         list.add(menuItem2);
-        SlideMenuItem menuItem3 = new SlideMenuItem(ContentFragment.TRANSACTIONS, R.drawable.icn_transactions);
+        SlideMenuItem menuItem3 = new SlideMenuItem(UserFragment.TRANSACTIONS, R.drawable.icn_transactions);
         list.add(menuItem3);
-        SlideMenuItem menuItem4 = new SlideMenuItem(ContentFragment.INCOME, R.drawable.icn_income);
+        SlideMenuItem menuItem4 = new SlideMenuItem(UserFragment.INCOME, R.drawable.icn_income);
         list.add(menuItem4);
-        SlideMenuItem menuItem5 = new SlideMenuItem(ContentFragment.HISTORY, R.drawable.icn_history);
+        SlideMenuItem menuItem5 = new SlideMenuItem(UserFragment.PRIORITY, R.drawable.icn_priority);
         list.add(menuItem5);
-//        SlideMenuItem menuItem5 = new SlideMenuItem(ContentFragment.ACCOUNTS, R.drawable.icn_accounts);
-//        list.add(menuItem5);
     }
 
 
@@ -168,6 +168,9 @@ public class MainActivity extends AppCompatActivity implements ViewAnimator.View
 
     // replaceUser
     private ScreenShotable replaceUserFragment(int topPosition) {
+
+        Log.d("replaceUserFragment","check!");
+
         View view = findViewById(R.id.content_frame);
         int finalRadius = Math.max(view.getWidth(), view.getHeight());
         SupportAnimator animator = ViewAnimationUtils.createCircularReveal(view, 0, topPosition, 0, finalRadius);
@@ -176,7 +179,6 @@ public class MainActivity extends AppCompatActivity implements ViewAnimator.View
 
         animator.start();
 
-        UserFragment userFragment = new UserFragment();
         getSupportFragmentManager().beginTransaction()
                 .replace(R.id.content_frame, userFragment).addToBackStack(null).commit();
         return userFragment;
@@ -228,8 +230,8 @@ public class MainActivity extends AppCompatActivity implements ViewAnimator.View
         return incomeFragment;
     }
 
-    // replaceHistory
-    private ScreenShotable replaceHistoryFragment(int topPosition) {
+     // replacePriority
+    private ScreenShotable replacePriorityFragment(int topPosition) {
         View view = findViewById(R.id.content_frame);
         int finalRadius = Math.max(view.getWidth(), view.getHeight());
         SupportAnimator animator = ViewAnimationUtils.createCircularReveal(view, 0, topPosition, 0, finalRadius);
@@ -237,25 +239,25 @@ public class MainActivity extends AppCompatActivity implements ViewAnimator.View
         animator.setDuration(ViewAnimator.CIRCULAR_REVEAL_ANIMATION_DURATION);
 
         animator.start();
-        HistoryFragment historyFragment = new HistoryFragment();
+        PriorityFragment priorityFragment = new PriorityFragment();
         getSupportFragmentManager().beginTransaction()
-                .replace(R.id.content_frame, historyFragment).addToBackStack(null).commit();
-        return historyFragment;
+                .replace(R.id.content_frame, priorityFragment).addToBackStack(null).commit();
+        return priorityFragment;
     }
 
     @Override
     public ScreenShotable onSwitch(Resourceble slideMenuItem, ScreenShotable screenShotable, int position) {
         switch (slideMenuItem.getName()) {
-            case ContentFragment.USER:
+            case UserFragment.USER:
                 return replaceUserFragment(position);
-            case ContentFragment.BALANCE:
+            case UserFragment.BALANCE:
                 return replaceBalanceFragment(position);
-            case ContentFragment.TRANSACTIONS:
+            case UserFragment.TRANSACTIONS:
                 return replaceTransactionsFragment(position);
-            case ContentFragment.INCOME:
+            case UserFragment.INCOME:
                 return replaceIncomeFragment(position);
-            case ContentFragment.HISTORY:
-                return replaceHistoryFragment(position);
+            case UserFragment.PRIORITY:
+                return replacePriorityFragment(position);
             default:
                 return replaceCurrentFragment(screenShotable);
         }

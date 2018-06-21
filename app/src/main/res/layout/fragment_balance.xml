@@ -24,7 +24,10 @@
         android:layout_marginRight="20dp"
         android:clickable="true"
         android:focusable="true"
-        android:src="@drawable/icn_income" />
+        android:backgroundTint="@android:color/transparent"
+        android:src="@drawable/icn_add"
+
+        />
 
     <ListView
         android:layout_width="match_parent"

@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragment.IncomeFragment">
+    tools:context=".fragment.PriorityFragment">
 
     <TextView
         android:layout_width="match_parent"
@@ -11,12 +11,10 @@
         android:textSize="30sp"
         android:gravity="center"
         android:layout_marginTop="253dp"
-
-        android:text="INCOME FRAGMENT" />
-
+        android:text="PRIORITY FRAGMENT" />
 
     <android.support.design.widget.FloatingActionButton
-        android:id="@+id/floatingIncomeButton"
+        android:id="@+id/floatingPriorityButton"
         android:layout_width="66dp"
         android:layout_height="56dp"
         android:layout_gravity="bottom|right"
@@ -28,9 +26,5 @@
         android:src="@drawable/icn_add"
 
         />
-
-    <ListView
-        android:layout_width="match_parent"
-        android:layout_height="729dp" />
 
 </FrameLayout>
