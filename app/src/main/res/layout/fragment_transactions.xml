@@ -1,21 +1,86 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".fragment.TransactionsFragment">
 
-    <TextView
+    <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textSize="30sp"
-        android:gravity="center"
-        android:layout_marginTop="253dp"
+        android:layout_height="match_parent">
 
-        android:text="TRANSACTIONS FRAGMENT" />
+        <ImageView
+            android:id="@+id/rightTransactionBar"
+            android:layout_width="152dp"
+            android:layout_height="38dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="16dp"
+            android:src="@drawable/white_bar"
+            app:layout_constraintStart_toEndOf="@+id/transactionsImage"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <ListView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        <ListView
+            android:layout_width="match_parent"
+            android:layout_height="474dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <ImageView
+            android:id="@+id/mainTransactionCircle"
+            android:layout_width="122dp"
+            android:layout_height="101dp"
+            android:src="@drawable/white_circle"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/leftTransactionBar"
+            android:layout_width="152dp"
+            android:layout_height="38dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginTop="16dp"
+            android:src="@drawable/white_bar"
+            app:layout_constraintEnd_toStartOf="@+id/transactionsImage"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/transactionsImage"
+            android:layout_width="67dp"
+            android:layout_height="72dp"
+            android:layout_marginBottom="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:src="@drawable/icn_transactions"
+            app:layout_constraintBottom_toBottomOf="@+id/mainTransactionCircle"
+            app:layout_constraintEnd_toEndOf="@+id/mainTransactionCircle"
+            app:layout_constraintStart_toStartOf="@+id/mainTransactionCircle"
+            app:layout_constraintTop_toTopOf="@+id/mainTransactionCircle" />
+
+        <TextView
+            android:id="@+id/textTransactionsTotOut"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="-€150,00"
+            android:textColor="@android:color/holo_red_light"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toStartOf="@+id/mainTransactionCircle"
+            app:layout_constraintTop_toBottomOf="@+id/leftTransactionBar" />
+
+        <TextView
+            android:id="@+id/textTransactionsTotIn"
+            android:layout_width="wrap_content"
+            android:layout_height="15dp"
+            android:layout_marginTop="8dp"
+            android:text="€1200,00"
+            android:textColor="@android:color/holo_green_light"
+            app:layout_constraintStart_toEndOf="@+id/mainTransactionCircle"
+            app:layout_constraintTop_toBottomOf="@+id/rightTransactionBar" />
+    </android.support.constraint.ConstraintLayout>
 
 </FrameLayout>

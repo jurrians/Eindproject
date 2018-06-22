@@ -21,8 +21,8 @@
             <TextView
                 android:id="@+id/userName"
                 android:layout_width="wrap_content"
-                android:layout_height="54dp"
-                android:layout_marginBottom="8dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="4dp"
                 android:layout_marginTop="36dp"
                 android:text="H. Janssen"
                 android:textColor="@android:color/white"
@@ -37,19 +37,21 @@
                 android:id="@+id/accountNumber"
                 android:layout_width="wrap_content"
                 android:layout_height="32dp"
-                android:layout_marginBottom="40dp"
+                android:layout_marginTop="10dp"
                 android:text="NL56 INGB 0123456789"
                 android:textColor="@android:color/white"
                 android:textSize="24sp"
-                app:layout_constraintBottom_toTopOf="@+id/circleBalance"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.504"
-                app:layout_constraintStart_toStartOf="parent" />
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/userName" />
 
             <ImageView
                 android:id="@+id/circleUserPic"
                 android:layout_width="140dp"
                 android:layout_height="160dp"
+                android:layout_marginEnd="4dp"
+                android:layout_marginStart="4dp"
                 android:layout_marginTop="36dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -60,8 +62,10 @@
                 android:id="@+id/circlePiggyBank"
                 android:layout_width="120dp"
                 android:layout_height="120dp"
+                android:layout_marginEnd="4dp"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="96dp"
+                app:layout_constraintEnd_toStartOf="@+id/circleUserPic"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:srcCompat="@drawable/white_circle" />
@@ -71,8 +75,10 @@
                 android:layout_width="120dp"
                 android:layout_height="120dp"
                 android:layout_marginEnd="8dp"
+                android:layout_marginStart="8dp"
                 android:layout_marginTop="96dp"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/circleUserPic"
                 app:layout_constraintTop_toTopOf="parent"
                 app:srcCompat="@drawable/white_circle" />
 
@@ -92,8 +98,10 @@
                 android:layout_width="120dp"
                 android:layout_height="120dp"
                 android:layout_marginBottom="96dp"
+                android:layout_marginEnd="4dp"
                 android:layout_marginStart="8dp"
                 app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/circleBalance"
                 app:layout_constraintStart_toStartOf="parent"
                 app:srcCompat="@drawable/white_circle" />
 
@@ -104,9 +112,165 @@
                 android:layout_height="120dp"
                 android:layout_marginBottom="96dp"
                 android:layout_marginEnd="8dp"
+                android:layout_marginStart="4dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/circleBalance"
                 app:srcCompat="@drawable/white_circle" />
+
+            <TextView
+                android:id="@+id/textPayDayCounter"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="16dp"
+                android:text="31"
+                android:textAlignment="center"
+                android:textAppearance="@style/TextAppearance.AppCompat"
+                android:textSize="46dp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="@+id/circlePayDay"
+                app:layout_constraintHorizontal_bias="0.549"
+                app:layout_constraintStart_toStartOf="@+id/circlePayDay"
+                app:layout_constraintTop_toTopOf="@+id/circlePayDay" />
+
+            <TextView
+                android:id="@+id/textDays"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="8dp"
+                android:text="DAYS"
+                android:textAlignment="center"
+                android:textColor="@android:color/white"
+                android:textSize="22dp"
+                app:layout_constraintEnd_toEndOf="@+id/circlePayDay"
+                app:layout_constraintHorizontal_bias="0.52"
+                app:layout_constraintStart_toStartOf="@+id/circlePayDay"
+                app:layout_constraintTop_toBottomOf="@+id/textPayDayCounter" />
+
+            <ImageView
+                android:id="@+id/imageBalance"
+                android:layout_width="48dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="24dp"
+                app:layout_constraintEnd_toEndOf="@+id/circleBalance"
+                app:layout_constraintStart_toStartOf="@+id/circleBalance"
+                app:layout_constraintTop_toTopOf="@+id/circleBalance"
+                app:srcCompat="@drawable/icn_balance" />
+
+            <TextView
+                android:id="@+id/textUserBalance"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="€1024,03"
+                android:textAlignment="center"
+                android:textColor="@android:color/holo_green_light"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/imageBalance" />
+
+            <TextView
+                android:id="@+id/textSpentSincePayDay"
+                android:layout_width="wrap_content"
+                android:layout_height="25dp"
+                android:layout_marginBottom="8dp"
+                android:text="-€2000,21"
+                android:textColor="@android:color/holo_red_light"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.501"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textUserBalance"
+                app:layout_constraintVertical_bias="0.015" />
+
+            <TextView
+                android:id="@+id/textPriorityAmountLeft"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="8dp"
+                android:text="€624,00"
+                android:textAlignment="center"
+                android:textColor="@android:color/holo_red_light"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="@+id/circlePriority"
+                app:layout_constraintStart_toStartOf="@+id/circlePriority"
+                app:layout_constraintTop_toBottomOf="@+id/imagePriority" />
+
+            <ImageView
+                android:id="@+id/imagePriority"
+                android:layout_width="51dp"
+                android:layout_height="42dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="24dp"
+                app:layout_constraintEnd_toEndOf="@+id/circlePriority"
+                app:layout_constraintHorizontal_bias="0.509"
+                app:layout_constraintStart_toStartOf="@+id/circlePriority"
+                app:layout_constraintTop_toTopOf="@+id/circlePriority"
+                app:srcCompat="@drawable/icn_priority" />
+
+            <TextView
+                android:id="@+id/textFreeMoneyLeft"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="8dp"
+                android:text="€400,03"
+                android:textAlignment="center"
+                android:textColor="@android:color/holo_green_light"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="@+id/circleFreeMoney"
+                app:layout_constraintStart_toStartOf="@+id/circleFreeMoney"
+                app:layout_constraintTop_toBottomOf="@+id/imageFreeMoney" />
+
+            <ImageView
+                android:id="@+id/imageUser"
+                android:layout_width="158dp"
+                android:layout_height="203dp"
+                android:layout_marginTop="16dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/icn_user" />
+
+            <ImageView
+                android:id="@+id/imageFreeMoney"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="20dp"
+                app:layout_constraintEnd_toEndOf="@+id/circleFreeMoney"
+                app:layout_constraintHorizontal_bias="0.535"
+                app:layout_constraintStart_toStartOf="@+id/circleFreeMoney"
+                app:layout_constraintTop_toTopOf="@+id/circleFreeMoney"
+                app:srcCompat="@drawable/icn_freemoney" />
+
+            <ImageView
+                android:id="@+id/imagePiggyBank"
+                android:layout_width="75dp"
+                android:layout_height="80dp"
+                android:layout_marginBottom="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="16dp"
+                app:layout_constraintBottom_toBottomOf="@+id/circlePiggyBank"
+                app:layout_constraintEnd_toEndOf="@+id/circlePiggyBank"
+                app:layout_constraintStart_toStartOf="@+id/circlePiggyBank"
+                app:layout_constraintTop_toTopOf="@+id/circlePiggyBank"
+                app:layout_constraintVertical_bias="0.421"
+                app:srcCompat="@drawable/icn_piggybank" />
 
         </android.support.constraint.ConstraintLayout>
 

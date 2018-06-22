@@ -3,34 +3,90 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".fragment.IncomeFragment">
 
-    <TextView
+    <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textSize="30sp"
-        android:gravity="center"
-        android:layout_marginTop="253dp"
+        android:layout_height="match_parent">
 
-        android:text="INCOME FRAGMENT" />
+        <ImageView
+            android:id="@+id/rightPriorityBar"
+            android:layout_width="152dp"
+            android:layout_height="38dp"
+            android:layout_marginStart="14dp"
+            android:layout_marginTop="16dp"
+            android:src="@drawable/white_bar"
+            app:layout_constraintStart_toEndOf="@+id/priorityImage"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/mainPriorityCircle"
+            android:layout_width="122dp"
+            android:layout_height="101dp"
+            android:src="@drawable/white_circle"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/leftPriorityBar"
+            android:layout_width="152dp"
+            android:layout_height="38dp"
+            android:layout_marginEnd="2dp"
+            android:layout_marginTop="16dp"
+            android:src="@drawable/white_bar"
+            app:layout_constraintEnd_toStartOf="@+id/priorityImage"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/priorityImage"
+            android:layout_width="67dp"
+            android:layout_height="72dp"
+            android:layout_marginBottom="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:src="@drawable/icn_income"
+            app:layout_constraintBottom_toBottomOf="@+id/mainPriorityCircle"
+            app:layout_constraintEnd_toEndOf="@+id/mainPriorityCircle"
+            app:layout_constraintHorizontal_bias="0.333"
+            app:layout_constraintStart_toStartOf="@+id/mainPriorityCircle"
+            app:layout_constraintTop_toTopOf="@+id/mainPriorityCircle"
+            app:layout_constraintVertical_bias="0.615" />
+
+        <TextView
+            android:id="@+id/textIncomeReveived"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="48dp"
+            android:text="TextView"
+            android:textColor="@android:color/holo_green_light"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toStartOf="@+id/mainPriorityCircle"
+            app:layout_constraintTop_toTopOf="@+id/leftPriorityBar" />
+
+        <ListView
+            android:layout_width="match_parent"
+            android:layout_height="474dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/textIncomeUnreceived"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:text="TextView"
+            android:textColor="@android:color/holo_red_light"
+            android:textStyle="bold"
+            app:layout_constraintStart_toEndOf="@+id/mainPriorityCircle"
+            app:layout_constraintTop_toBottomOf="@+id/rightPriorityBar" />
+
+    </android.support.constraint.ConstraintLayout>
 
 
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/floatingIncomeButton"
-        android:layout_width="66dp"
-        android:layout_height="56dp"
-        android:layout_gravity="bottom|right"
-        android:layout_marginBottom="20dp"
-        android:layout_marginRight="20dp"
-        android:clickable="true"
-        android:focusable="true"
-        android:backgroundTint="@android:color/transparent"
-        android:src="@drawable/icn_add"
-
-        />
-
-    <ListView
-        android:layout_width="match_parent"
-        android:layout_height="729dp" />
 
 </FrameLayout>

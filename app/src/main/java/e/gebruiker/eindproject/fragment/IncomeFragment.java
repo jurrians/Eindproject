@@ -35,18 +35,6 @@ public class IncomeFragment extends Fragment implements ScreenShotable{
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_income, container, false);
 
-        final FloatingActionButton addIncomeButton = (FloatingActionButton) rootView.findViewById(R.id.floatingIncomeButton);
-
-        addIncomeButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Log.d("click", "click");
-                replaceAddIncomeFragment();
-            }
-        });
-
-
-
         return rootView;
     }
 

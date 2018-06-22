@@ -83,12 +83,14 @@ public class MainActivity extends AppCompatActivity implements ViewAnimator.View
         list.add(menuItem1);
         SlideMenuItem menuItem2 = new SlideMenuItem(UserFragment.BALANCE, R.drawable.icn_balance);
         list.add(menuItem2);
-        SlideMenuItem menuItem3 = new SlideMenuItem(UserFragment.TRANSACTIONS, R.drawable.icn_transactions);
+        SlideMenuItem menuItem3 = new SlideMenuItem(UserFragment.INCOME, R.drawable.icn_income);
         list.add(menuItem3);
-        SlideMenuItem menuItem4 = new SlideMenuItem(UserFragment.INCOME, R.drawable.icn_income);
+        SlideMenuItem menuItem4 = new SlideMenuItem(UserFragment.PRIORITY, R.drawable.icn_priority);
         list.add(menuItem4);
-        SlideMenuItem menuItem5 = new SlideMenuItem(UserFragment.PRIORITY, R.drawable.icn_priority);
+        SlideMenuItem menuItem5 = new SlideMenuItem(UserFragment.TRANSACTIONS, R.drawable.icn_transactions);
         list.add(menuItem5);
+
+
     }
 
 

@@ -105,5 +105,12 @@ door elementen uit niet werkende deel --> app doet het weer!
 ![](doc/aant_9.JPG)
 ![](doc/aant_10.JPG)
 
-	
+# day 12
+
+- overbodige code (contentfragment) weggehaald
+- menu aangepast; iconen + history weggehaald
+- skelet van backend van de code geschreven
+- definitieve frontEnd voor fragments ontworpen
+- definitieve frontEnd vrijwel alle fragents zo goed als afgemaakt
+- onderzoek gedaan naar ing api en hoe de sandbox precies werkt
 
