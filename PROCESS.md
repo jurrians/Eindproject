@@ -114,3 +114,14 @@ door elementen uit niet werkende deel --> app doet het weer!
 - definitieve frontEnd vrijwel alle fragents zo goed als afgemaakt
 - onderzoek gedaan naar ing api en hoe de sandbox precies werkt
 
+# day 13 vr
+- gehele dag onderzoek gedaan naar ing api en geprobeerd deze werkend te krijgen.
+
+# day 14/15 weekend
+- na veel moeilijkheden besloten om de ing api niet te gebruiken
+- besloten om gebruiker zelf transacties in te laten voeren, dmv van een foto-naar tekst api van
+    google: google vision, onderdeel van de firebase ML-kit.
+
+# day 16 ma
+- google vision werkend gekregen
+- nieuwe fragments gemaakt

@@ -34,7 +34,7 @@ public class PriorityFragment extends Fragment implements ScreenShotable{
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_priority, container, false);
-//
+
 //        final FloatingActionButton addIncomeButton = (FloatingActionButton) rootView.findViewById(R.id.floatingPriorityButton);
 //
 //        addIncomeButton.setOnClickListener(new View.OnClickListener() {
@@ -52,19 +52,19 @@ public class PriorityFragment extends Fragment implements ScreenShotable{
 
 
 
-//    private ScreenShotable replaceAddPriorityFragment() {
-//        View view = getActivity().findViewById(R.id.content_frame);
-//        int finalRadius = Math.max(view.getWidth(), view.getHeight());
-//        SupportAnimator animator = ViewAnimationUtils.createCircularReveal(view, 0, 0, 0, finalRadius);
-//        animator.setInterpolator(new AccelerateInterpolator());
-//        animator.setDuration(ViewAnimator.CIRCULAR_REVEAL_ANIMATION_DURATION);
-//
-//        animator.start();
-//        AddPriorityFragment addPriorityFragment = new AddPriorityFragment();
-//        getActivity().getSupportFragmentManager().beginTransaction()
-//                .replace(R.id.content_frame, addPriorityFragment).addToBackStack(null).commit();
-//        return addPriorityFragment;
-//    }
+    private ScreenShotable replaceAddPriorityFragment() {
+        View view = getActivity().findViewById(R.id.content_frame);
+        int finalRadius = Math.max(view.getWidth(), view.getHeight());
+        SupportAnimator animator = ViewAnimationUtils.createCircularReveal(view, 0, 0, 0, finalRadius);
+        animator.setInterpolator(new AccelerateInterpolator());
+        animator.setDuration(ViewAnimator.CIRCULAR_REVEAL_ANIMATION_DURATION);
+
+        animator.start();
+        AddPriorityFragment addPriorityFragment = new AddPriorityFragment();
+        getActivity().getSupportFragmentManager().beginTransaction()
+                .replace(R.id.content_frame, addPriorityFragment).addToBackStack(null).commit();
+        return addPriorityFragment;
+    }
 
 
     @Override

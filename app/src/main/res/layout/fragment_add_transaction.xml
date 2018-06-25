@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".fragment.AddTransactionFragment">
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageButton
+            android:id="@+id/btnPriceCamera"
+            android:layout_width="79dp"
+            android:layout_height="79dp"
+            android:layout_marginBottom="8dp"
+            android:layout_marginStart="8dp"
+            android:background="@null"
+            android:src="@drawable/icn_photo"
+            app:layout_constraintBottom_toBottomOf="@+id/imageCircle2"
+            app:layout_constraintEnd_toEndOf="@+id/imageCircle2"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="@+id/imageCircle2"
+            app:layout_constraintTop_toTopOf="@+id/imageCircle2"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <TextView
+            android:id="@+id/textCategory"
+            android:layout_width="wrap_content"
+            android:layout_height="29dp"
+            android:layout_marginTop="20dp"
+            android:text="CATEGORY:"
+            android:textSize="24dp"
+            android:textStyle="bold"
+            android:textColor="@android:color/white"
+            app:layout_constraintEnd_toStartOf="@+id/categorySpinner"
+            app:layout_constraintTop_toTopOf="@+id/categorySpinner" />
+
+        <TextView
+            android:id="@+id/textDate"
+            android:layout_width="85dp"
+            android:layout_height="29dp"
+            android:layout_marginTop="16dp"
+            android:text="DATE:"
+            android:textColor="@android:color/white"
+            android:textSize="24dp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toStartOf="@+id/editDate"
+            app:layout_constraintTop_toTopOf="@+id/editDate" />
+
+        <EditText
+            android:id="@+id/editPrice"
+            android:layout_width="173dp"
+            android:layout_height="62dp"
+            android:layout_marginTop="8dp"
+            android:ems="10"
+            android:inputType="text"
+            android:text="Click to edit.."
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.549"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/imageCircle2" />
+
+        <ImageView
+            android:id="@+id/imageBar2"
+            android:layout_width="273dp"
+            android:layout_height="2dp"
+            android:layout_marginEnd="80dp"
+            android:layout_marginTop="8dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/white_bar"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textPrice" />
+
+        <ImageView
+            android:id="@+id/imageBar4"
+            android:layout_width="300dp"
+            android:layout_height="2dp"
+            android:layout_marginEnd="52dp"
+            android:layout_marginTop="56dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/white_bar"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/editDate" />
+
+        <TextView
+            android:id="@+id/textPrice"
+            android:layout_width="85dp"
+            android:layout_height="29dp"
+            android:layout_marginTop="16dp"
+            android:text="PRICE:"
+            android:textSize="24dp"
+            android:textStyle="bold"
+            android:textColor="@android:color/white"
+            app:layout_constraintEnd_toStartOf="@+id/editPrice"
+            app:layout_constraintTop_toTopOf="@+id/editPrice" />
+
+        <ImageView
+            android:id="@+id/imageBar3"
+            android:layout_width="300dp"
+            android:layout_height="2dp"
+            android:layout_marginEnd="52dp"
+            android:layout_marginTop="60dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/white_bar"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/categorySpinner" />
+
+        <ImageView
+            android:id="@+id/imageCircle1"
+            android:layout_width="79dp"
+            android:layout_height="79dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginTop="33dp"
+            android:src="@drawable/white_circle"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/rightTransactionBar" />
+
+        <ImageView
+            android:id="@+id/rightTransactionBar"
+            android:layout_width="152dp"
+            android:layout_height="38dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="16dp"
+            android:src="@drawable/white_bar"
+            app:layout_constraintStart_toEndOf="@+id/transactionsImage"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/mainTransactionCircle"
+            android:layout_width="122dp"
+            android:layout_height="101dp"
+            android:src="@drawable/white_circle"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/leftTransactionBar"
+            android:layout_width="152dp"
+            android:layout_height="38dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginTop="16dp"
+            android:src="@drawable/white_bar"
+            app:layout_constraintEnd_toStartOf="@+id/transactionsImage"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/transactionsImage"
+            android:layout_width="67dp"
+            android:layout_height="72dp"
+            android:layout_marginBottom="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:src="@drawable/icn_transactions"
+            app:layout_constraintBottom_toBottomOf="@+id/mainTransactionCircle"
+            app:layout_constraintEnd_toEndOf="@+id/mainTransactionCircle"
+            app:layout_constraintStart_toStartOf="@+id/mainTransactionCircle"
+            app:layout_constraintTop_toTopOf="@+id/mainTransactionCircle" />
+
+        <TextView
+            android:id="@+id/textTag"
+            android:layout_width="85dp"
+            android:layout_height="29dp"
+            android:layout_marginTop="8dp"
+            android:text="TAG:"
+            android:textColor="@android:color/white"
+            android:textSize="24dp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toStartOf="@+id/editTag"
+            app:layout_constraintTop_toBottomOf="@+id/mainTransactionCircle" />
+
+        <EditText
+            android:id="@+id/editTag"
+            android:layout_width="173dp"
+            android:layout_height="65dp"
+            android:layout_marginTop="8dp"
+            android:ems="10"
+            android:inputType="text"
+            android:text="Click to edit.."
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.549"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/imageCircle1" />
+
+        <ImageButton
+            android:id="@+id/btnAddTrans"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginBottom="24dp"
+            android:background="@null"
+            android:scaleType="fitXY"
+            android:src="@drawable/icn_add"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <ImageView
+            android:id="@+id/imageCircle2"
+            android:layout_width="79dp"
+            android:layout_height="79dp"
+            android:layout_marginBottom="312dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginTop="4dp"
+            android:src="@drawable/white_circle"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageCircle1" />
+
+        <ImageView
+            android:id="@+id/imageBar1"
+            android:layout_width="273dp"
+            android:layout_height="2dp"
+            android:layout_marginEnd="80dp"
+            android:layout_marginTop="12dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/white_bar"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textTag" />
+
+        <EditText
+            android:id="@+id/editDate"
+            android:layout_width="204dp"
+            android:layout_height="66dp"
+            android:layout_marginEnd="52dp"
+            android:layout_marginTop="20dp"
+            android:ems="10"
+            android:inputType="date"
+            android:textAlignment="center"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/categorySpinner" />
+
+        <Spinner
+            android:id="@+id/categorySpinner"
+            android:layout_width="199dp"
+            android:layout_height="62dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginTop="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageCircle2" />
+
+        <ImageButton
+            android:id="@+id/btnTagCamera"
+            android:layout_width="79dp"
+            android:layout_height="79dp"
+            android:background="@null"
+            android:src="@drawable/icn_photo"
+            app:layout_constraintBottom_toBottomOf="@+id/imageCircle1"
+            app:layout_constraintEnd_toEndOf="@+id/imageCircle1"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/editTag"
+            app:layout_constraintTop_toTopOf="@+id/imageCircle1"
+            app:layout_constraintVertical_bias="0.0" />
+
+    </android.support.constraint.ConstraintLayout>
+
+</FrameLayout>
