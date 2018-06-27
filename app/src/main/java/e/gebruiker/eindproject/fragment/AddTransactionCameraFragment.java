@@ -1,18 +1,22 @@
 package e.gebruiker.eindproject.fragment;
 
+import android.app.FragmentTransaction;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.provider.MediaStore;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.AccelerateInterpolator;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -40,25 +44,37 @@ public class AddTransactionCameraFragment extends Fragment implements ScreenShot
 
     protected ImageView imageView;
     private Button snapBtn;
-    private Button detectBtn;
+    private Button addTransBtn;
     private TextView txtView;
     private Bitmap imageBitmap;
 
     protected int res;
 
+//    public String cameraFor;
+
+    public String detectedText;
+
+
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.fragment_add_transaction, container, false);
 
-        getActivity().setContentView(R.layout.fragment_add_transaction);
+
+        View rootView = inflater.inflate(R.layout.fragment_add_transaction_camera, container, false);
+
+        getActivity().setContentView(R.layout.fragment_add_transaction_camera);
         snapBtn = getActivity().findViewById(R.id.snapBtn);
-        detectBtn = getActivity().findViewById(R.id.detectBtn);
+        addTransBtn = getActivity().findViewById(R.id.addTranstBtn);
         imageView = getActivity().findViewById(R.id.imageView);
         txtView = getActivity().findViewById(R.id.detectTextView);
-        snapBtn.setOnClickListener(snapListener);
-        detectBtn.setOnClickListener(detectListener);
 
+
+
+        snapBtn.setOnClickListener(snapListener);
+        addTransBtn.setOnClickListener(addListener);
+
+        dispatchTakePictureIntent();
 
 
         return rootView;
@@ -67,17 +83,27 @@ public class AddTransactionCameraFragment extends Fragment implements ScreenShot
     public View.OnClickListener snapListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
+            Log.d("snapBtn", "click");
             dispatchTakePictureIntent();
         }
     };
 
-    public View.OnClickListener detectListener = new View.OnClickListener() {
+    public View.OnClickListener addListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            detectTxt();
-        }
-    };
 
+            Log.d("addTransaction", "click");
+            System.out.println("click");
+
+            getActivity().setContentView(R.layout.fragment_add_transaction);
+
+            Bundle bundleGet = getArguments();
+            String cameraFor = bundleGet.get("cameraFor").toString();
+
+            getActivity().setContentView(R.layout.fragment_add_transaction);
+            setEditTag(detectedText);
+                    }
+    };
 
     static final int REQUEST_IMAGE_CAPTURE = 1;
 
@@ -94,6 +120,7 @@ public class AddTransactionCameraFragment extends Fragment implements ScreenShot
             Bundle extras = data.getExtras();
             imageBitmap = (Bitmap) extras.get("data");
             imageView.setImageBitmap(imageBitmap);
+            detectTxt();
         }
     }
 
@@ -122,9 +149,15 @@ public class AddTransactionCameraFragment extends Fragment implements ScreenShot
             String txt = block.getText();
             txtView.setTextSize(24);
             txtView.setText(txt);
+
+            detectedText = txt;
         }
     }
 
+    public void setEditTag(String text){
+        EditText editTag = getActivity().findViewById(R.id.editTag);
+        editTag.setText(text);
+    }
 
     @Override
     public void takeScreenShot() {
@@ -135,5 +168,11 @@ public class AddTransactionCameraFragment extends Fragment implements ScreenShot
     public Bitmap getBitmap() {
         return null;
     }
+
+
+
+
+
+
 
 }

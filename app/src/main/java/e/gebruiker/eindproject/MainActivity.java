@@ -4,6 +4,7 @@ import android.Manifest;
 import android.content.pm.PackageManager;
 import android.content.res.Configuration;
 import android.graphics.Color;
+import android.media.Image;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.ActivityCompat;
@@ -20,6 +21,8 @@ import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 import android.view.View;
 import android.view.animation.AccelerateInterpolator;
+import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -28,6 +31,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import e.gebruiker.eindproject.fragment.AddTransactionFragment;
 import e.gebruiker.eindproject.fragment.BalanceFragment;
 import e.gebruiker.eindproject.fragment.IncomeFragment;
 import e.gebruiker.eindproject.fragment.PriorityFragment;
@@ -46,61 +50,32 @@ public class MainActivity extends AppCompatActivity implements ViewAnimator.View
     private DrawerLayout drawerLayout;
     private ActionBarDrawerToggle drawerToggle;
     private List<SlideMenuItem> list = new ArrayList<>();
-//    private ContentFragment contentFragment;
+
     private UserFragment userFragment;
     private ViewAnimator viewAnimator;
     private LinearLayout linearLayout;
 
+    public String cameraFor;
 
-//    int MY_PERMISSIONS_REQUEST_CAMERA = 0;
+//    public ImageButton btnAddTransactionCamera= findViewById(R.id.btnTagCamera);
 //
+//    public Button snapBtn = findViewById(R.id.snapBtn);
+//    public Button addTransButton = findViewById(R.id.addTranstBtn);
+
 //
-//    public CameraSource mCameraSource;
-//    public SurfaceView mCameraView;
-//    public TextView mTextView;
+//    ImageButton snapBtn = (ImageButton) findViewById(R.id.snapBtn);
+//    public ImageButton addTransBtn = findViewById(R.id.addTranstBtn);
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
-
-
-
-
-
-
-
-
-//        TextRecognizer textRecognizer = new TextRecognizer();
-
-
-
-//        if (ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED)
-//        {
-//            if (ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.CAMERA))
-//            {
-//
-//            }
-//            else
-//            {
-//                ActivityCompat.requestPermissions(this,new String[]{Manifest.permission.CAMERA}, RequestCameraPermissionId );
-//            }
-//        }
-//
-//
-//        mCameraView = (SurfaceView) findViewById(R.id.surfaceViewAddTrans);
-//        mTextView = (TextView) findViewById(R.id.textViewAdTransaction);
-
-
-
-
         userFragment = UserFragment.newInstance(R.layout.fragment_main);
         getSupportFragmentManager().beginTransaction()
                 .replace(R.id.content_frame, userFragment)
                 .commit();
-
 
 
         drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -117,11 +92,21 @@ public class MainActivity extends AppCompatActivity implements ViewAnimator.View
         createMenuList();
         viewAnimator = new ViewAnimator<>(this, list, userFragment, drawerLayout, this);
 
-
-
-
-
     }
+
+
+    @Override
+    public void onBackPressed() {
+        if (getSupportFragmentManager().getBackStackEntryCount() != 0) {
+            getSupportFragmentManager().popBackStack();
+        } else {
+            super.onBackPressed();
+        }
+    }
+
+
+
+
 
     private void createMenuList() {
         SlideMenuItem menuItem0 = new SlideMenuItem(UserFragment.CLOSE, R.drawable.icn_close);
@@ -294,6 +279,8 @@ public class MainActivity extends AppCompatActivity implements ViewAnimator.View
         return priorityFragment;
     }
 
+
+
     @Override
     public ScreenShotable onSwitch(Resourceble slideMenuItem, ScreenShotable screenShotable, int position) {
         switch (slideMenuItem.getName()) {
@@ -329,92 +316,6 @@ public class MainActivity extends AppCompatActivity implements ViewAnimator.View
     public void addViewToContainer(View view) {
         linearLayout.addView(view);
     }
-
-//    private void startCameraSource() {
-//
-//        //Create the TextRecognizer
-//        final TextRecognizer textRecognizer = new TextRecognizer.Builder(getApplicationContext()).build();
-//
-//        if (!textRecognizer.isOperational()) {
-//            Log.w("tag", "Detector dependencies not loaded yet");
-//        } else {
-//
-//            //Initialize camerasource to use high resolution and set Autofocus on.
-//            mCameraSource = new CameraSource.Builder(getApplicationContext(), textRecognizer)
-//                    .setFacing(CameraSource.CAMERA_FACING_BACK)
-//                    .setRequestedPreviewSize(1280, 1024)
-//                    .setAutoFocusEnabled(true)
-//                    .setRequestedFps(2.0f)
-//                    .build();
-//
-//            /**
-//             * Add call back to SurfaceView and check if camera permission is granted.
-//             * If permission is granted we can start our cameraSource and pass it to surfaceView
-//             */
-//            mCameraView.getHolder().addCallback(new SurfaceHolder.Callback() {
-//                @Override
-//                public void surfaceCreated(SurfaceHolder holder) {
-//                    try {
-//
-//                        if (ActivityCompat.checkSelfPermission(getApplicationContext(),
-//                                Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
-//
-//                            ActivityCompat.requestPermissions(MainActivity.this,
-//                                    new String[]{Manifest.permission.CAMERA}, MY_PERMISSIONS_REQUEST_CAMERA);
-//                            return;
-//                        }
-//                        mCameraSource.start(mCameraView.getHolder());
-//                    } catch (IOException e) {
-//                        e.printStackTrace();
-//                    }
-//                }
-//
-//                @Override
-//                public void surfaceChanged(SurfaceHolder holder, int format, int width, int height) {
-//                }
-//
-//                /**
-//                 * Release resources for cameraSource
-//                 */
-//                @Override
-//                public void surfaceDestroyed(SurfaceHolder holder) {
-//                    mCameraSource.stop();
-//                }
-//            });
-//
-//            //Set the TextRecognizer's Processor.
-//            textRecognizer.setProcessor(new Detector.Processor<TextBlock>() {
-//                @Override
-//                public void release() {
-//                }
-//
-//                /**
-//                 * Detect all the text from camera using TextBlock and the values into a stringBuilder
-//                 * which will then be set to the textView.
-//                 * */
-//                @Override
-//                public void receiveDetections(Detector.Detections<TextBlock> detections) {
-//                    final SparseArray<TextBlock> items = detections.getDetectedItems();
-//                    if (items.size() != 0 ){
-//
-//                        mTextView.post(new Runnable() {
-//                            @Override
-//                            public void run() {
-//                                StringBuilder stringBuilder = new StringBuilder();
-//                                for(int i=0;i<items.size();i++){
-//                                    TextBlock item = items.valueAt(i);
-//                                    stringBuilder.append(item.getValue());
-//                                    stringBuilder.append("\n");
-//                                }
-//                                mTextView.setText(stringBuilder.toString());
-//                            }
-//                        });
-//                    }
-//                }
-//            });
-//        }
-//    }
-//
 
 }
 

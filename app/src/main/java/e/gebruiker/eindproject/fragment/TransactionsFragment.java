@@ -62,7 +62,8 @@ public class TransactionsFragment extends Fragment implements ScreenShotable{
     };
 
 
-    private ScreenShotable replaceAddTransactionFragment() {
+
+    public ScreenShotable replaceAddTransactionFragment() {
         View view = getActivity().findViewById(R.id.content_frame);
         int finalRadius = Math.max(view.getWidth(), view.getHeight());
         SupportAnimator animator = ViewAnimationUtils.createCircularReveal(view, 0, 0, 0, finalRadius);
@@ -71,7 +72,7 @@ public class TransactionsFragment extends Fragment implements ScreenShotable{
 
         animator.start();
         AddTransactionFragment addTransactionFragment = new AddTransactionFragment();
-        getActivity().getSupportFragmentManager().beginTransaction()
+        getActivity().getSupportFragmentManager().beginTransaction().add(R.id.content_frame, addTransactionFragment, "ADDTRANS")
                 .replace(R.id.content_frame, addTransactionFragment).addToBackStack(null).commit();
         return addTransactionFragment;
     }

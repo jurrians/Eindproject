@@ -8,24 +8,24 @@
 
     <Button
         android:id="@+id/snapBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="79dp"
+        android:layout_height="79dp"
         android:layout_alignParentBottom="true"
         android:layout_alignParentStart="true"
-        android:layout_marginBottom="13dp"
-        android:layout_marginStart="57dp"
-        android:background="@null"
+        android:layout_marginBottom="26dp"
+        android:layout_marginStart="59dp"
+        android:background="@drawable/white_circle"
         android:text="Snap" />
 
     <Button
-        android:id="@+id/detectBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:id="@+id/addTranstBtn"
+        android:layout_width="79dp"
+        android:layout_height="79dp"
         android:layout_alignParentEnd="true"
         android:layout_alignTop="@+id/snapBtn"
-        android:layout_marginEnd="43dp"
-        android:background="@null"
-        android:text="Detect" />
+        android:layout_marginEnd="59dp"
+        android:background="@drawable/white_circle"
+        android:text="ADD" />
 
     <ImageView
         android:id="@+id/imageView"
@@ -33,7 +33,7 @@
         android:layout_height="360dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        app:srcCompat="@android:color/background_light" />
+        app:srcCompat="@android:color/background_dark" />
 
     <TextView
         android:id="@+id/detectTextView"
@@ -41,6 +41,18 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="104dp"
-        android:textColor="@android:color/white"/>
+        android:layout_marginBottom="130dp"
+        android:textColor="@android:color/white" />
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="381dp"
+        android:layout_height="24dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="198dp"
+        android:layout_marginLeft="0dp"
+        android:layout_marginRight="0dp"
+        android:scaleType="fitXY"
+        android:src="@drawable/white_bar" />
 </RelativeLayout>
