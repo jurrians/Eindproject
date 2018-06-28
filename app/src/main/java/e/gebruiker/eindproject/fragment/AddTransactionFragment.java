@@ -1,40 +1,21 @@
 package e.gebruiker.eindproject.fragment;
 
-import android.app.FragmentTransaction;
-import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
-import android.provider.MediaStore;
-import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 
 import android.text.InputType;
-import android.text.method.PasswordTransformationMethod;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.AccelerateInterpolator;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Spinner;
-import android.widget.TextView;
-import android.widget.Toast;
-
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.firebase.ml.vision.FirebaseVision;
-import com.google.firebase.ml.vision.common.FirebaseVisionImage;
-import com.google.firebase.ml.vision.text.FirebaseVisionText;
-import com.google.firebase.ml.vision.text.FirebaseVisionTextDetector;
-
-import java.util.List;
 
 import e.gebruiker.eindproject.Database;
-import e.gebruiker.eindproject.MainActivity;
 import e.gebruiker.eindproject.R;
 
 import e.gebruiker.eindproject.TransactionEntry;
@@ -42,9 +23,6 @@ import io.codetail.animation.SupportAnimator;
 import io.codetail.animation.ViewAnimationUtils;
 import yalantis.com.sidemenu.interfaces.ScreenShotable;
 import yalantis.com.sidemenu.util.ViewAnimator;
-
-import static android.app.Activity.RESULT_OK;
-import static android.content.ContentValues.TAG;
 
 
 public class AddTransactionFragment extends Fragment implements ScreenShotable {

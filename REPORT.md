@@ -122,6 +122,21 @@ De EntryAdapter-class, welke wordt gebruikt in de TransactionsFragment, bestaat 
 welke de waarden uit de database koppelt aan de individuele textViews binnen iedere rij. 
 
 #### AddTransactionCameraFragment
+
+Bij het klikken op de camera-knop in de AddTransactionFragment, wordt de gebruiker doorverwezen naar de AddTransactionCameraFragment. 
+Wanneer dit fragment wordt geopend, wordt automatisch de camera geopend. De keuze hiervoor is gemaakt om het doorlopen van de app 
+zo soepel mogelijk te laten verlopen voor de gebruiker. Dit gebeurt dankzij de 'dispatchTakePictureIntent()' functie die wordt aangeroepen 
+in de 'onCreateView()'. Deze functie wordt ook aangeroepen wanneer de gebruiker op de 'SNAP' knopt klikt. Deze knop bestaat om de gebruiker, wanneer er bijvoorbeeld 
+geen tekst wordt herkent in een foto, een nieuwe foto te laten maken. 
+
+Wanneer de gebruiker een foto heeft genomen, wordt er in de 'onActiviyResult()' (Welke automatisch wordt aangeroepen na het maken van een foto) de foto
+uit de gegenereerde Bundle gehaald en geplaatst op de imageView van de AddTransactionCameraObject. Vervolgens wordt de 'detectTxt()' functie aangeroepen,
+waarbinnen de Google Vision/Firebase Vision API zijn werk doet om de tekst uit de afbeelding te halen. De gegenereerde tekst wordt vervolgens doorgegeven 
+aan de 'processTxt()', waar de gedetecteerde text vanuit een Block wordt omgezet naar een String, om vervolgens in de (lege) textView van 
+de AddTransactioCameraFragment geplaatst te worden. Wanneer er geen text gevonden is, krijgt de gebruiker een Toast message: "No Text :(".
+
+Naast de 'SNAP'-knop, staat de 'ADD'-knop. Bij 
+
 - dispatchTakePictureIntent()
 - bij klikken op add: nieuwe bundle aangemaakt met daarin de gegenereerde tag, geef deze door aan addtransactionFragment
 

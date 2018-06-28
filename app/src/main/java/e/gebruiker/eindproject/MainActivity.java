@@ -1,39 +1,21 @@
 package e.gebruiker.eindproject;
 
-import android.Manifest;
-import android.content.pm.PackageManager;
 import android.content.res.Configuration;
-import android.database.Cursor;
 import android.graphics.Color;
-import android.media.Image;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.v4.app.ActivityCompat;
-import android.support.v4.content.ContextCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
-import android.util.SparseArray;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.SurfaceHolder;
-import android.view.SurfaceView;
 import android.view.View;
 import android.view.animation.AccelerateInterpolator;
-import android.widget.Button;
-import android.widget.ImageButton;
 import android.widget.LinearLayout;
-import android.widget.ListView;
-import android.widget.TextView;
 
-
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-import e.gebruiker.eindproject.fragment.AddTransactionFragment;
 import e.gebruiker.eindproject.fragment.BalanceFragment;
 import e.gebruiker.eindproject.fragment.IncomeFragment;
 import e.gebruiker.eindproject.fragment.PriorityFragment;
@@ -44,7 +26,6 @@ import io.codetail.animation.ViewAnimationUtils;
 import yalantis.com.sidemenu.interfaces.Resourceble;
 import yalantis.com.sidemenu.interfaces.ScreenShotable;
 import yalantis.com.sidemenu.model.SlideMenuItem;
-//import e.gebruiker.eindproject.fragment.UserFragment;
 import yalantis.com.sidemenu.util.ViewAnimator;
 
 
