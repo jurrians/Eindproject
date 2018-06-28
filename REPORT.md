@@ -5,14 +5,14 @@
 
 Veel studenten hebben moeite met het overzichtelijk houden van hun financiën en hun uitgaven te structureren, 
 waardoor er vaak nog maand over is aan het einde van hun geld. De Budgetteer-app, gemaakt voor het eindproject
-van de Minor Programmeren, biedt een oplossing voor dit probleem. De app biedt gebruikers de mogelijkheid om transacties die zij doen toe te voegen aan de app en hier een tag
-aan toe te voegen middels hun camera, door bijvoorbeeld een foto te nemen van het logo van de Albert Heijn 
-na het doen van boodschappen.
+van de Minor Programmeren, biedt een oplossing voor dit probleem. De app biedt gebruikers de mogelijkheid om 
+transacties die zij doen toe te voegen aan de app en hier een tag aan toe te voegen middels hun camera, 
+door bijvoorbeeld een foto te nemen van het logo van de Albert Heijn na het doen van boodschappen.
 
 Hoewel nog niet volledig geïmplementeerd, kan bij het toevoegen van een nieuwe 
 uitgave ook een categorie geselecteerd worden. Deze categorieën kan de gebruiker zelf invoeren en hierbij bepalen 
 hoeveel procent van zijn/haar 'vrij besteedbare' geld aan deze categorie uitgegeven kan worden deze maand. 
-In het balans-scherm kan de gebruiker vervolgens zien hoeveel geld hij per categorie heeft uitgegeven en nog te besteden heeft.
+In het balans-scherm kan de gebruiker vervolgens zien hoeveel geld hij/zij per categorie heeft uitgegeven en nog te besteden heeft.
 
 'Vrij besteedbaar geld' wordt bepaald door de door de gebruiker ingevoerde prioriteitsuitgaven af te trekken van de 
 (ook door de gebruiker ingevoerde) inkomsten. Prioriteitsuitgaven zijn uitgaven die iedere maand worden afgeschreven, 
@@ -69,7 +69,6 @@ de transactie wordt toegevoegd aan de lijst.
 ### Detailed overview
 
 #### MainActivity & UserFragment
-
 Hoewel de app gebruik maakt van fragments, heeft de app één Activity om deze fragments mogelijk te maken: de MainActivity. 
 Binnen deze activity staat de code die het geanimeerde side-menu mogelijk maakt. Hier worden (middels 'createMenuList()') de
 verschillende items in het side-menu gedefiniëerd en toegevoegd aan de item-list van het menu. De functie 'setActionBar()' 
@@ -86,7 +85,6 @@ deze Userfragment lopen (e.g. UserFragment.BALANCE), is het niet nodig om verder
 fragments. 
 
 #### TransactionsFragment
-
 Vanuit het side-menu kom je, wanneer je op de onderste knop klikt, op de TransactionsFragment uit. Evenals bij de UserFragment, wordt 
 hiervoor een '.newInstance()' gebruikt i.p.v. een 'normale' replaceFragment-functie. Dit is gedaan omdat er vanuit de TransactionsFragment
 genavigeerd kan worden naar de AddTransactionFragment (en vanuit daar naar de AddTransactionCameraFragment), welke, aangezien deze niet 
@@ -99,7 +97,6 @@ de AddTransactionFragment, waar nieuwe data ingevoerd kan worden. Hier wordt wed
 de sessie bewaard moet blijven. 
 
 #### AddTransactionFragment & TransactionEntry.java
-
 In de AddTransactionFragment kan de gebruiker een nieuwe transactie toevoegen. De door de gebruiker ingevoerde data (Tag, Price, Category)
 wordt bij het klikken op de grote ronde knop onderaan het scherm tot een TransactionEntry-object gemaakt. 
 Deze data wordt d.m.v. addTransactionEntry() van de editTexts verzameld, tot TransactionEntry-object gemaakt en 
@@ -112,7 +109,6 @@ Om dit te doen, klikt de gebruiker op de camera-knop naast de Tag-editText. Vanu
 AddTransactionCameraFragment. Ook hier wordt een nieuwe instance voor aangemaakt. 
 
 #### Database.java & EntryAdapter.java
-
 Zoals hierboven al vermeld wordt, wordt er in de TransactionsFragment gebruik gemaakt van een SQL-database en een adapter. 
 De database zelf en de functies die voor de database gebruikt worden zijn te vinden in Database.java: een Database-constructor,
 een insert()- functie om data toe te voegen aan de SQL-database, een getter (getDatabase) om de data uit de database op te vragen
@@ -122,7 +118,6 @@ De EntryAdapter-class, welke wordt gebruikt in de TransactionsFragment, bestaat 
 welke de waarden uit de database koppelt aan de individuele textViews binnen iedere rij. 
 
 #### AddTransactionCameraFragment
-
 Bij het klikken op de camera-knop in de AddTransactionFragment, wordt de gebruiker doorverwezen naar de AddTransactionCameraFragment. 
 Wanneer dit fragment wordt geopend, wordt automatisch de camera geopend. De keuze hiervoor is gemaakt om het doorlopen van de app 
 zo soepel mogelijk te laten verlopen voor de gebruiker. Dit gebeurt dankzij de 'dispatchTakePictureIntent()' functie die wordt aangeroepen 
@@ -133,67 +128,34 @@ Wanneer de gebruiker een foto heeft genomen, wordt er in de 'onActiviyResult()' 
 uit de gegenereerde Bundle gehaald en geplaatst op de imageView van de AddTransactionCameraObject. Vervolgens wordt de 'detectTxt()' functie aangeroepen,
 waarbinnen de Google Vision/Firebase Vision API zijn werk doet om de tekst uit de afbeelding te halen. De gegenereerde tekst wordt vervolgens doorgegeven 
 aan de 'processTxt()', waar de gedetecteerde text vanuit een Block wordt omgezet naar een String, om vervolgens in de (lege) textView van 
-de AddTransactioCameraFragment geplaatst te worden. Wanneer er geen text gevonden is, krijgt de gebruiker een Toast message: "No Text :(".
+de AddTransactioCameraFragment geplaatst te worden. Wanneer er geen tekst is gevonden, krijgt de gebruiker een Toast message: "No Text :(".
 
-Naast de 'SNAP'-knop, staat de 'ADD'-knop. Bij 
-
-- dispatchTakePictureIntent()
-- bij klikken op add: nieuwe bundle aangemaakt met daarin de gegenereerde tag, geef deze door aan addtransactionFragment
-
-- detectTxt()
-- processTxt()
-
-
-
+Naast de 'SNAP'-knop, staat de 'ADD'-knop. Bij het klikken hierop wordt er een bundle aangemaakt waarin de eerder gevonden tekst in wordt gestopt
+en wordt meegegeven aan de AddTransactionFragment. Vervolgens wordt de gebruiker teruggebracht naar de AddTransactionFragment, waar zoals eerder beschreven
+de tekst uit de bundle wordt gehaald en wordt toegevoegd aan de listView. 
 
 ## Challenges during development
 
-### Why did I make changes in my app-design?
-### Trade-offs with current solution
-### What would I have done differently?
+Terugkijkend op de afgelopen vier weken kan er gesteld worden dat het ontwikkelen van deze app niet zonder moeite is verlopen, te zien aan het feit dat
+het niet gelukt is om een afgerond product af te leveren. Ook is het niet gelukt om de ING-/Open Bank Project-API te implementeren. Dit wil echter 
+zeker niet zeggen dat ik ontevreden ben over het verloop van deze opdracht; juist door de struikelblokken die ik ben tegengekomen heb ik veel lessen geleerd
+over het opzetten en uitvoeren van een programmeerproject. Al met al zijn er tijdens dit project twee 'fouten' gemaakt die ervoor gezorgd hebben dat ik 
+niet tot het beoogde eindproduct ben gekomen. 
 
-## Future development
+De eerste paar dagen van het project verliepen verliepen goed: al vrij had ik snel een plan opgesteld voor mijn app en had online een library gevonden 
+voor een geanimeerd side-menu, wat de navigatie door de app gebruikersvriendelijk zou maken en er ook nog eens goed uit zag. Ik moest alleen nog even
+uitvogelen hoe fragments precies werken, dit was namelijk nodig voor het navigatiemenu. Achteraf gezien ben ik hier de eerste 'fout' begaan van dit project.
+Het gebruiken van Fragments zorgt er namelijk voor dat dingen die normaal relatief makkelijk zijn, zoals bijvoorbeeld de transitie van de ene pagina naar de andere,
+behoorlijk moeilijk te maken. Hierdoor ben ik de afgelopen weken voornamelijk bezig geweest met het debuggen van fragment-gerelateerde problemen, waardoor ik
+niet aan alle onderdelen van de back-end (en een deel van de front-end) ben toegekomen. Dit heeft er ook toe geleid dat het maken van een HistoryFragment 
+geschrapt is, zowel als de later bedachte PiggyBank. Daarnaast is er ook nog de keuze gemaakt om het automatiseren van de transacties middels de ING-/
+Open Bank Project-API te schrappen. Deze keuze heeft echter niet alleen met de problematiek rondom fragments te maken; de aanvankelijke keuze voor een van 
+deze API's was wellicht verkeerd. In het begin van het project had ik mij beter moeten inlezen in o.a. het opzetten van een Sandbox, zodat ik er niet te laat
+achter zou zijn gekomen dat het implementeren van deze API's in de gestelde tijd voor het project behoorlijk lastig zou worden. In andere woorden, dit was 
+'fout' nummer twee. Na het gebruik van geautomatiseerde transacties te schrappen, besloot ik het handmatige invoeren van de transacties op te leuken met een API.
+Ik kwam uit op de Google Vision API, waarmee tekst uit foto's omgezet kan worden in Strings. Het implementeren hiervan verliep relatief makkelijk maar leidde helaas
+weer tot fragment-gerelateerde problematiek. 
 
-
-
-____________
-
-TODO:
-
-- overzicht van app schetsen: wat zijn de activities/fragments/classes en wat doen ze
-
-- nieuwe readme maken + oude readme veranderen in proposal.md
-
-- eindverslag schrijven
-	- Solution: usefullness + coherence van je app
-	- Interaction design: pleasant/consistent designm ease of use, prevention of errors
-	- Process: evaluation of rigor as evidenced in process book, cleanlyness of 
-		repository and commit history (every day)
-	- Final report: 
-		- to what extent have you clearly documented your project, 
-			the design and the understanding of chosen topic
-	- Code: Well-designed + readable
-
-
-		Opbouw: 
-		- SHort description of application
-		- Describe technical design: how is functionality implemented
-			--> like design.md but updated
-			First: high level overview
-			second: go into detail; describe modules/classes (apps)
-							files/functions (data)
-							and how they relate
-		- describe challenges during development
-			document all important changes 
-			--> let see how much youve learned past month
-		- defend decisions by writing argument (single paragraph)
-			why was is good to do it different?
-			trade-offs current solution?
-			given more time: would you choose another solution?
-	
-		MAKE SURE: 
-		document is complete and reflects the final state of the appliction
-
-na 6: 
-
-- filmpje maken
+Uiteindelijk ben ik, ondanks de vele strubbelingen die het veroorzaakte, tevreden met mijn keuze om fragments te gebruiken. De voordelen die het oplevert met
+betrekking tot UI-design, zoals bijvoorbeeld het navigatiemenu, maken het de problemen die ik ermee gehad heb waard. Uiteindelijk heb ik relatief goed doorgekregen
+hoe fragments precies werken, al gebeurde dit helaas pas de laatste twee dagen van het project. 

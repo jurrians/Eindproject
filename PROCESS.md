@@ -3,16 +3,30 @@ Process Book Eindproject Minor programmeren - 2018
 Jurrian Schreuder - 11053542
 
 # day 1
+- Project proposal geschreven
+- Keuze gemaakt voor geanimeerd side-menu
+	--> []https://github.com/Yalantis/Side-Menu.Android
+
+# day 2
+- Begonnen met onderzoek doen voor design
+- Onderzoek gedaan naar hoe fragments werken; opzet blijkt anders dan bij activity's
+- Begonnen met schrijven van Design
+
+# day 3
+- Onderzoek gedaan voor design
+- Visualisatie van verschillende schermen in de app gemaakt met photoshop
+- Design document afgemaakt
+
+
+
+# day 4 do
 
 - Onderzoek gedaan naar hoe fragments werken:
 	- Youtube tutorials gekeken
 	- Artikelen gelezen
 	- Hulp gevraagd aan TA's en andere studenten
-
-	--> Keuze voor fragments vanwege fancy geanimeerd menu:
-		https://github.com/Yalantis/Side-Menu.Android
-
-# day 2
+		
+# day 5
 
 - Door gedoe met Git nieuwe repository aan moeten maken
 - Naar een youtube tutorial de basics van de UI neergezet in code
@@ -20,13 +34,13 @@ Jurrian Schreuder - 11053542
 	Uiteindelijk keuze gemaakt om code uit tutorial met placeholders over
 	te nemen en stapsgewijs aan te passen. 
 
-# day 3
+# day 6
 
 - Omdat het menu nog niet werkte de eigen fragments tijdelijk vervangen met placeholders uit
 de tutorial
 - Icons uitgezocht voor menu
 
-# day 4
+# day 7
 
 - Menu center screen gemaakt vanwege esthetische overwegingen
 - Placeholder fragments vervangen door eigen fragments
@@ -36,7 +50,7 @@ de tutorial
 	Paars heeft een connotatie van luxe. 
 - Lang bezig geweest met fragments correct krijgen
 
-# day 5
+# day 8
 
 - App deed het plots niet meer; ondanks hulp TA's niet direct uitgevonden waardoor dit kwam.
 	- Hier vrijwel de hele dag mee bezig geweest
@@ -46,12 +60,12 @@ de tutorial
 		--> Lag waarschijnlijk aan de build.gradle
 	- Door deze rare bug niets nieuws kunnen schrijven
 
-# day 6 t/m 8
+# day 9 t/m 11
 
 Niet aan app kunnen werken; vrijstelling voor deze dagen gekregen van Martijn
 
 
-# day 9
+# day 12
 
 - Rare bug er eindelijk uitgekregen, delen van code in werkende app stapsgewijs vervangen
 door elementen uit niet werkende deel --> App doet het weer!
@@ -61,7 +75,7 @@ door elementen uit niet werkende deel --> App doet het weer!
 - Na uitvinden dat er elke dag naar git gepusht moet worden mijn process book,
 	notities uit kladblok in PROCESS.MD gezet
 
-# day 10 
+# day 13
 
 - Uiteindelijk fragments addCategory en addIncome werkend gekregen
 - Terugklikken bij alle fragments gefixt
@@ -72,7 +86,7 @@ door elementen uit niet werkende deel --> App doet het weer!
   ![](doc/aant_2.JPG)
   ![](doc/aant_3.JPG)
 
-# day 11
+# day 14
 
 - Besloten van main een soort user-overzicht te maken
 - Begin van uiteindelijke layout voor main/User gemaakt
@@ -100,7 +114,7 @@ door elementen uit niet werkende deel --> App doet het weer!
 ![](doc/aant_9.JPG)
 ![](doc/aant_10.JPG)
 
-# day 12
+# day 15
 
 - Overbodige code (contentfragment) weggehaald
 - Menu aangepast; iconen + history weggehaald
@@ -109,32 +123,32 @@ door elementen uit niet werkende deel --> App doet het weer!
 - Definitieve frontEnd vrijwel alle fragents zo goed als afgemaakt
 - Onderzoek gedaan naar ing api en hoe de sandbox precies werkt
 
-# day 13 vr
+# day 16
 - Gehele dag onderzoek gedaan naar ing api en geprobeerd deze werkend te krijgen
 
-# day 14/15
+# day 17/18
 - Na veel moeilijkheden besloten om de ing api niet te gebruiken
 - Besloten om gebruiker zelf transacties in te laten voeren, dmv van een foto-naar tekst api van
     google: Google Vision, onderdeel van de firebase ML-kit
-     --> https://firebase.google.com/docs/ml-kit/recognize-text
+     --> []https://firebase.google.com/docs/ml-kit/recognize-text
 
 - Besloten om PiggyBank weg te laten uit de app
 
-# day 16
+# day 19
 - Google vision werkend gekregen
 - Nieuwe fragments gemaakt
 
-day 17
+day 20
 - Hele dag bezig geweest met bug waardoor app crashde bij onBackClick()
     + na maken foto waren alle buttons plotseling niet meer clickbaar
    --> nog geen oplossing gevonden
 
-day 18
+day 21
 - Bezig geweest met zelfde bug als gisteren
 - Sql-DB + benodigdheden geschreven voor addTransactions
 - Bug grotendeels opgelost, maar o.a. bug onstaan waardoor het zetten van de editText na gebruik camera niet meer werkt
 
-day 19
+day 22
 - Laatste bugs uit de app gehaald: onBackClicked() werkt nu overal
 - Transactions-Listview layout gemaakt
 - Invoer data vanuit input-menu naar transactions-Listview gefixt
