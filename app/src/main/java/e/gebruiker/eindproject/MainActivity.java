@@ -60,27 +60,6 @@ public class MainActivity extends AppCompatActivity implements ViewAnimator.View
 
     private TransactionsFragment transactionsFragment;
 
-
-//    private ImageButton addTransactionButton;
-
-//    private Database db;
-//    private EntryAdapter adapter;
-//    private ListView listView;
-
-
-
-
-
-//    public ImageButton btnAddTransactionCamera= findViewById(R.id.btnTagCamera);
-//
-//    public Button snapBtn = findViewById(R.id.snapBtn);
-//    public Button addTransButton = findViewById(R.id.addTranstBtn);
-
-//
-//    ImageButton snapBtn = (ImageButton) findViewById(R.id.snapBtn);
-//    public ImageButton addTransBtn = findViewById(R.id.addTranstBtn);
-        
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -90,7 +69,6 @@ public class MainActivity extends AppCompatActivity implements ViewAnimator.View
         getSupportFragmentManager().beginTransaction()
                 .replace(R.id.content_frame, userFragment)
                 .commit();
-
 
         drawerLayout = findViewById(R.id.drawer_layout);
         drawerLayout.setScrimColor(Color.TRANSPARENT);
@@ -105,32 +83,7 @@ public class MainActivity extends AppCompatActivity implements ViewAnimator.View
         setActionBar();
         createMenuList();
         viewAnimator = new ViewAnimator<>(this, list, userFragment, drawerLayout, this);
-
     }
-
-
-
-
-//    @Override
-//    public void onResume() {
-//        super.onResume();
-//        updateData();
-//    }
-//
-//    private void updateData() {
-//        Cursor cursor = db.selectAll();
-//        adapter.swapCursor(cursor);
-//    }
-//
-//    View.OnClickListener addTransactionListener = new View.OnClickListener() {
-//        @Override
-//        public void onClick(View view) {
-//            replaceAddTransactionFragment();
-//        }
-//    };
-
-
-
 
     @Override
     public void onBackPressed() {
@@ -140,8 +93,6 @@ public class MainActivity extends AppCompatActivity implements ViewAnimator.View
             super.onBackPressed();
         }
     }
-
-
 
     private void createMenuList() {
         SlideMenuItem menuItem0 = new SlideMenuItem(UserFragment.CLOSE, R.drawable.icn_close);
@@ -156,10 +107,7 @@ public class MainActivity extends AppCompatActivity implements ViewAnimator.View
         list.add(menuItem4);
         SlideMenuItem menuItem5 = new SlideMenuItem(UserFragment.TRANSACTIONS, R.drawable.icn_transactions);
         list.add(menuItem5);
-
-
     }
-
 
     private void setActionBar() {
         Toolbar toolbar = findViewById(R.id.toolbar);
@@ -208,7 +156,6 @@ public class MainActivity extends AppCompatActivity implements ViewAnimator.View
         drawerToggle.onConfigurationChanged(newConfig);
     }
 
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_main, menu);
@@ -228,24 +175,24 @@ public class MainActivity extends AppCompatActivity implements ViewAnimator.View
         }
     }
 
-
+    // redirects the user to the current fragment
     public ScreenShotable replaceCurrentFragment(ScreenShotable screenShotable) {
         return screenShotable;
     }
 
+    // __________________________________________________________________________________________ //
 
+                    // FOLLOWING FUNCTIONS: REDIRECT USER TO FRAGMENT X //
 
     // replaceUser
     private ScreenShotable replaceUserFragment(int topPosition) {
 
-        Log.d("replaceUserFragment","check!");
-
         View view = findViewById(R.id.content_frame);
         int finalRadius = Math.max(view.getWidth(), view.getHeight());
-        SupportAnimator animator = ViewAnimationUtils.createCircularReveal(view, 0, topPosition, 0, finalRadius);
+        SupportAnimator animator = ViewAnimationUtils.createCircularReveal(view, 0,
+                topPosition, 0, finalRadius);
         animator.setInterpolator(new AccelerateInterpolator());
         animator.setDuration(ViewAnimator.CIRCULAR_REVEAL_ANIMATION_DURATION);
-
         animator.start();
 
         getSupportFragmentManager().beginTransaction()
@@ -253,16 +200,16 @@ public class MainActivity extends AppCompatActivity implements ViewAnimator.View
         return userFragment;
     }
 
-
     // replaceBalance
     private ScreenShotable replaceBalanceFragment(int topPosition) {
         View view = findViewById(R.id.content_frame);
         int finalRadius = Math.max(view.getWidth(), view.getHeight());
-        SupportAnimator animator = ViewAnimationUtils.createCircularReveal(view, 0, topPosition, 0, finalRadius);
+        SupportAnimator animator = ViewAnimationUtils.createCircularReveal(view, 0,
+                topPosition, 0, finalRadius);
         animator.setInterpolator(new AccelerateInterpolator());
         animator.setDuration(ViewAnimator.CIRCULAR_REVEAL_ANIMATION_DURATION);
-
         animator.start();
+
         BalanceFragment balanceFragment = new BalanceFragment();
         getSupportFragmentManager().beginTransaction()
                 .replace(R.id.content_frame, balanceFragment).addToBackStack(null).commit();
@@ -273,22 +220,16 @@ public class MainActivity extends AppCompatActivity implements ViewAnimator.View
     private ScreenShotable replaceTransactionsFragment(int topPosition) {
         View view = findViewById(R.id.content_frame);
         int finalRadius = Math.max(view.getWidth(), view.getHeight());
-        SupportAnimator animator = ViewAnimationUtils.createCircularReveal(view, 0, topPosition, 0, finalRadius);
+        SupportAnimator animator = ViewAnimationUtils.createCircularReveal(view, 0,
+                topPosition, 0, finalRadius);
         animator.setInterpolator(new AccelerateInterpolator());
         animator.setDuration(ViewAnimator.CIRCULAR_REVEAL_ANIMATION_DURATION);
 
         animator.start();
-//        TransactionsFragment transactionsFragment = new TransactionsFragment();
-
         transactionsFragment = TransactionsFragment.newInstance(R.layout.fragment_transactions);
-        getSupportFragmentManager().beginTransaction()
+        getSupportFragmentManager().beginTransaction().add(transactionsFragment, "TRANS")
                 .replace(R.id.content_frame, transactionsFragment).addToBackStack(null)
                 .commit();
-
-
-
-//        getSupportFragmentManager().beginTransaction()
-//                .replace(R.id.content_frame, transactionsFragment).addToBackStack(null).commit();
         return transactionsFragment;
     }
 
@@ -296,11 +237,12 @@ public class MainActivity extends AppCompatActivity implements ViewAnimator.View
     private ScreenShotable replaceIncomeFragment(int topPosition) {
         View view = findViewById(R.id.content_frame);
         int finalRadius = Math.max(view.getWidth(), view.getHeight());
-        SupportAnimator animator = ViewAnimationUtils.createCircularReveal(view, 0, topPosition, 0, finalRadius);
+        SupportAnimator animator = ViewAnimationUtils.createCircularReveal(view, 0,
+                topPosition, 0, finalRadius);
         animator.setInterpolator(new AccelerateInterpolator());
         animator.setDuration(ViewAnimator.CIRCULAR_REVEAL_ANIMATION_DURATION);
-
         animator.start();
+
         IncomeFragment incomeFragment = new IncomeFragment();
         getSupportFragmentManager().beginTransaction()
                 .replace(R.id.content_frame, incomeFragment).addToBackStack(null).commit();
@@ -314,48 +256,18 @@ public class MainActivity extends AppCompatActivity implements ViewAnimator.View
         SupportAnimator animator = ViewAnimationUtils.createCircularReveal(view, 0, topPosition, 0, finalRadius);
         animator.setInterpolator(new AccelerateInterpolator());
         animator.setDuration(ViewAnimator.CIRCULAR_REVEAL_ANIMATION_DURATION);
-
         animator.start();
+
         PriorityFragment priorityFragment = new PriorityFragment();
         getSupportFragmentManager().beginTransaction()
                 .replace(R.id.content_frame, priorityFragment).addToBackStack(null).commit();
         return priorityFragment;
     }
 
+    // __________________________________________________________________________________________ //
 
 
-//    public ScreenShotable replaceAddTransactionFragment() {
-//        View view = findViewById(R.id.content_frame);
-//        int finalRadius = Math.max(view.getWidth(), view.getHeight());
-//        SupportAnimator animator = ViewAnimationUtils.createCircularReveal(view, 0, 0, 0, finalRadius);
-//        animator.setInterpolator(new AccelerateInterpolator());
-//        animator.setDuration(ViewAnimator.CIRCULAR_REVEAL_ANIMATION_DURATION);
-//        animator.start();
-//
-//        AddTransactionFragment addTransactionFragment = new AddTransactionFragment();
-//        getSupportFragmentManager().beginTransaction()
-//                .replace(R.id.content_frame, addTransactionFragment).addToBackStack(null).commit();
-//
-//        addTransactionButton = findViewById(R.id.buttonAddTransaction);
-//        addTransactionButton.setOnClickListener(addTransactionListener);
-//
-//        listView = findViewById(R.id.transListView);
-//
-//        db = Database.getDatabase(getApplicationContext());
-//        Cursor cursor = db.selectAll();
-//
-//        adapter = new EntryAdapter(this, cursor);
-//        listView.setAdapter(adapter);
-//
-//        return addTransactionFragment;
-//    }
-
-
-
-
-
-
-
+    // loads the fragment from the menu on which the user has clicked
     @Override
     public ScreenShotable onSwitch(Resourceble slideMenuItem, ScreenShotable screenShotable, int position) {
         switch (slideMenuItem.getName()) {
@@ -372,7 +284,6 @@ public class MainActivity extends AppCompatActivity implements ViewAnimator.View
             default:
                 return replaceCurrentFragment(screenShotable);
         }
-
     }
 
     @Override
@@ -384,13 +295,11 @@ public class MainActivity extends AppCompatActivity implements ViewAnimator.View
     public void enableHomeButton() {
         getSupportActionBar().setHomeButtonEnabled(true);
         drawerLayout.closeDrawers();
-
     }
 
     @Override
     public void addViewToContainer(View view) {
         linearLayout.addView(view);
     }
-
 }
 

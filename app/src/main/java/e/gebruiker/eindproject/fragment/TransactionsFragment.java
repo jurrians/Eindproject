@@ -29,17 +29,13 @@ import yalantis.com.sidemenu.util.ViewAnimator;
 public class TransactionsFragment extends Fragment implements ScreenShotable{
 
     private View containerView;
-    protected ImageView mImageView;
     protected int res;
-    private Bitmap bitmap;
-
-//    public TransactionsFragment transactionsFragment;
-
 
     Database db;
     EntryAdapter adapter;
     ListView listView;
 
+    public AddTransactionFragment addTransactionFragment;
 
     public static TransactionsFragment newInstance(int resId) {
         TransactionsFragment transactionsFragment = new TransactionsFragment();
@@ -58,8 +54,6 @@ public class TransactionsFragment extends Fragment implements ScreenShotable{
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        res = getArguments().getInt(Integer.class.getName());
-
     }
 
     @Override
@@ -78,11 +72,8 @@ public class TransactionsFragment extends Fragment implements ScreenShotable{
         adapter = new EntryAdapter(getContext(), cursor);
         listView.setAdapter(adapter);
 
-        // set clicklisteners
         return rootView;
     }
-
-
 
     @Override
     public void onResume() {
@@ -113,8 +104,6 @@ public class TransactionsFragment extends Fragment implements ScreenShotable{
         }
     };
 
-
-
     public ScreenShotable replaceAddTransactionFragment() {
         View view = getActivity().findViewById(R.id.content_frame);
         int finalRadius = Math.max(view.getWidth(), view.getHeight());
@@ -123,9 +112,9 @@ public class TransactionsFragment extends Fragment implements ScreenShotable{
         animator.setDuration(ViewAnimator.CIRCULAR_REVEAL_ANIMATION_DURATION);
         animator.start();
 
-        AddTransactionFragment addTransactionFragment = new AddTransactionFragment();
+        addTransactionFragment = AddTransactionFragment.newInstance(R.layout.fragment_add_transaction);
         getActivity().getSupportFragmentManager().beginTransaction().add(R.id.content_frame, addTransactionFragment, "ADDTRANS")
-                .replace(R.id.content_frame, addTransactionFragment, "ADDTRANS").addToBackStack(null).commit();
+                .replace(R.id.content_frame, addTransactionFragment).addToBackStack(null).commit();
         return addTransactionFragment;
     }
 

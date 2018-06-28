@@ -95,7 +95,7 @@
             android:layout_height="30dp"
             android:layout_marginStart="1dp"
             android:layout_marginTop="12dp"
-            android:src="@drawable/icn_piggybank"
+            android:src="@drawable/icn_priority"
             app:layout_constraintStart_toEndOf="@+id/textBalancePiggyBank"
             app:layout_constraintTop_toBottomOf="@+id/textBalanceFreeMoney" />
 

@@ -50,34 +50,22 @@ public class AddTransactionCameraFragment extends Fragment implements ScreenShot
 
     protected int res;
 
-//    public String cameraFor;
-
     public String detectedText;
-
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-
-
         View rootView = inflater.inflate(R.layout.fragment_add_transaction_camera, container, false);
-
-//        getActivity().setContentView(R.layout.fragment_add_transaction_camera);
-
 
         snapBtn = rootView.findViewById(R.id.snapBtn);
         addTransBtn = rootView.findViewById(R.id.addTranstBtn);
         imageView = rootView.findViewById(R.id.imageView);
         txtView = rootView.findViewById(R.id.detectTextView);
 
-
-
         snapBtn.setOnClickListener(snapListener);
         addTransBtn.setOnClickListener(addListener);
 
         dispatchTakePictureIntent();
-
 
         return rootView;
     }
@@ -87,49 +75,30 @@ public class AddTransactionCameraFragment extends Fragment implements ScreenShot
         public void onClick(View v) {
             Log.d("snapBtn", "click");
             dispatchTakePictureIntent();
-            getFragmentManager().popBackStackImmediate();
         }
     };
 
     public View.OnClickListener addListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
+            AddTransactionFragment addTransactionFragment = new AddTransactionFragment();
+            getActivity().getSupportFragmentManager().beginTransaction()
+                    .replace(R.id.content_frame, addTransactionFragment, "ADDTRANS").addToBackStack(null).commit();
 
-            Log.d("addTransaction", "click");
-            System.out.println("click");
-
-
-//            setEditTag(detectedText);
-//            getActivity().setContentView(R.layout.fragment_add_transaction);
-
-//            Bundle bundleGet = getArguments();
-//            String cameraFor = bundleGet.get("cameraFor").toString();
-
-//            getActivity().setContentView(R.layout.fragment_add_transaction);
-
-
-            AddTransactionFragment addTransactionFragment = (AddTransactionFragment) replaceAddTransactionFragment();
-            EditText editTag = addTransactionFragment.rootView.findViewById(R.id.editTag);
-            editTag.setText(detectedText);
-
-//            addTransactionFragment.editTag.setText(detectedText);
-
-//            Bundle tagBundle = makeTagBundle(detectedText);
-
-
-
-//            getActivity().onBackPressed();
+            Bundle tagBundle = new Bundle();
+            tagBundle.putString("tag", detectedText);
+            addTransactionFragment.setArguments(tagBundle);
             }
     };
 
     @Override
     public void onSaveInstanceState(@NonNull Bundle outState) {
         super.onSaveInstanceState(outState);
-
     }
 
     static final int REQUEST_IMAGE_CAPTURE = 1;
 
+    // opens the camera
     private void dispatchTakePictureIntent() {
         Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
         if (takePictureIntent.resolveActivity(getActivity().getPackageManager()) != null) {
@@ -137,6 +106,7 @@ public class AddTransactionCameraFragment extends Fragment implements ScreenShot
         }
     }
 
+    // puts image in preview-view
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
@@ -147,6 +117,7 @@ public class AddTransactionCameraFragment extends Fragment implements ScreenShot
         }
     }
 
+    // detects text in the image
     public void detectTxt() {
         FirebaseVisionImage image = FirebaseVisionImage.fromBitmap(imageBitmap);
         FirebaseVisionTextDetector detector = FirebaseVision.getInstance().getVisionTextDetector();
@@ -162,6 +133,7 @@ public class AddTransactionCameraFragment extends Fragment implements ScreenShot
         });
     }
 
+    // saves the detected text in variable and sets text to textView
     private void processTxt(FirebaseVisionText text) {
         List<FirebaseVisionText.Block> blocks = text.getBlocks();
         if (blocks.size() == 0) {
@@ -177,46 +149,12 @@ public class AddTransactionCameraFragment extends Fragment implements ScreenShot
         }
     }
 
-//    public void setEditTag(String text){
-////        EditText editTag = this.getView().findViewById(R.id.editTag);
-//        EditText editTag = getActivity().findViewById(R.id.editTag);
-//        editTag.setText(text);
-//    }
-
-    public Bundle makeTagBundle(String text) {
-        Bundle tagBundle = new Bundle();
-        tagBundle.putString(text, null);
-        return  tagBundle;
-    }
-
     @Override
     public void takeScreenShot() {
     }
-
 
     @Override
     public Bitmap getBitmap() {
         return null;
     }
-
-
-    public ScreenShotable replaceAddTransactionFragment() {
-        View view = getActivity().findViewById(R.id.content_frame);
-        int finalRadius = Math.max(view.getWidth(), view.getHeight());
-        SupportAnimator animator = ViewAnimationUtils.createCircularReveal(view, 0, 0, 0, finalRadius);
-        animator.setInterpolator(new AccelerateInterpolator());
-        animator.setDuration(ViewAnimator.CIRCULAR_REVEAL_ANIMATION_DURATION);
-
-        animator.start();
-        AddTransactionFragment addTransactionFragment = new AddTransactionFragment();
-        getActivity().getSupportFragmentManager().beginTransaction()
-                .replace(R.id.content_frame, addTransactionFragment, "ADDTRANS").addToBackStack(null).commit();
-        return addTransactionFragment;
-    }
-
-
-
-
-
-
 }

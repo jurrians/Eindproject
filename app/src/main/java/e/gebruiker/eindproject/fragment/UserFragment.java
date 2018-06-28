@@ -32,9 +32,7 @@ public class UserFragment extends Fragment implements ScreenShotable{
     public static final String PRIORITY = "History";
 
 
-
     private View containerView;
-    protected ImageView mImageView;
     protected int res;
     private Bitmap bitmap;
 
@@ -45,29 +43,6 @@ public class UserFragment extends Fragment implements ScreenShotable{
         userFragment.setArguments(bundle);
         return userFragment;
     }
-//
-
-//
-//    @Override
-//    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-//                             Bundle savedInstanceState) {
-//        final View rootView = inflater.inflate(R.layout.fragment_main, container, false);
-//        return rootView;
-//    }
-//
-//    @Override
-//    public void takeScreenShot() {
-//
-//    }
-//
-//    @Override
-//    public Bitmap getBitmap() {
-//        return null;
-//    }
-//
-//
-//}
-
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
@@ -78,9 +53,6 @@ public class UserFragment extends Fragment implements ScreenShotable{
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        Log.d("onCreate", "res");
-        Log.d("res", String.valueOf(getArguments().getInt(Integer.class.getName())));
         res = getArguments().getInt(Integer.class.getName());
     }
 
@@ -88,7 +60,6 @@ public class UserFragment extends Fragment implements ScreenShotable{
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_main, container, false);
-
         return rootView;
     }
 
@@ -104,11 +75,7 @@ public class UserFragment extends Fragment implements ScreenShotable{
                 UserFragment.this.bitmap = bitmap;
             }
         };
-
-
-
         thread.start();
-
     }
 
     @Override

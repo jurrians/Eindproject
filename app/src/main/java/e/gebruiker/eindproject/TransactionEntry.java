@@ -2,7 +2,6 @@ package e.gebruiker.eindproject;
 
 import java.io.Serializable;
 
-//    // TAG, PRICE, CATEGORY, DATE (+ AUTOGEN ID) -INJECTOR MAKEN
 public class TransactionEntry implements Serializable {
 
     private int _id;

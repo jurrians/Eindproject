@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -12,10 +13,14 @@
         android:layout_height="79dp"
         android:layout_alignParentBottom="true"
         android:layout_alignParentStart="true"
-        android:layout_marginBottom="26dp"
-        android:layout_marginStart="59dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginStart="38dp"
+        android:layout_marginTop="24dp"
         android:background="@drawable/white_circle"
-        android:text="Snap" />
+        android:text="Snap"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/detectTextView" />
 
     <Button
         android:id="@+id/addTranstBtn"
@@ -23,9 +28,14 @@
         android:layout_height="79dp"
         android:layout_alignParentEnd="true"
         android:layout_alignTop="@+id/snapBtn"
-        android:layout_marginEnd="59dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="38dp"
+        android:layout_marginTop="24dp"
         android:background="@drawable/white_circle"
-        android:text="ADD" />
+        android:text="ADD"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/detectTextView" />
 
     <ImageView
         android:id="@+id/imageView"
@@ -33,26 +43,38 @@
         android:layout_height="360dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@android:color/background_dark" />
 
     <TextView
         android:id="@+id/detectTextView"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="130dp"
-        android:textColor="@android:color/white" />
+        android:layout_marginBottom="8dp"
+        android:layout_marginTop="16dp"
+        android:textAlignment="center"
+        android:textColor="@android:color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView2"
+        app:layout_constraintVertical_bias="0.114" />
 
     <ImageView
         android:id="@+id/imageView2"
         android:layout_width="381dp"
-        android:layout_height="24dp"
+        android:layout_height="21dp"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="198dp"
-        android:layout_marginLeft="0dp"
-        android:layout_marginRight="0dp"
+        android:layout_marginTop="354dp"
         android:scaleType="fitXY"
-        android:src="@drawable/white_bar" />
-</RelativeLayout>
+        android:src="@drawable/white_bar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.666"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+</android.support.constraint.ConstraintLayout>

@@ -6,6 +6,7 @@ import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 
 import android.text.InputType;
@@ -56,210 +57,126 @@ public class AddTransactionFragment extends Fragment implements ScreenShotable {
 
 
 
-
-    public String cameraFor;
-
-    public Bundle cameraForBundle;
-
-
-    private Bundle savedState = null;
-
-
-    public EditText editTag;
+    private EditText editTag;
     private EditText editPrice;
     private Spinner categorySpinner;
     private EditText editDate;
 
     private ImageButton btnTagCamera;
-    private ImageButton btnPriceCamera;
-
     private ImageButton btnAddTrans;
 
+    public static AddTransactionFragment newInstance(int resId) {
+        AddTransactionFragment addTransactionFragment = new AddTransactionFragment();
+        Bundle bundle = new Bundle();
+        bundle.putInt(Integer.class.getName(), resId);
+        addTransactionFragment.setArguments(bundle);
+        return addTransactionFragment;
+    }
 
+    @Override
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        this.containerView = view.findViewById(R.id.container);
 
-    public View rootView;
+    }
 
-
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-//        super.onCreateView(inflater, container, savedInstanceState);
 
-        rootView = inflater.inflate(R.layout.fragment_add_transaction, container, false);
+        View rootView = inflater.inflate(R.layout.fragment_add_transaction, container, false);
 
-        editTag = getActivity().findViewById(R.id.editTag);
-
-        editPrice = getActivity().findViewById(R.id.editPrice);
+        editTag = rootView.findViewById(R.id.editTag);
+        editPrice = rootView.findViewById(R.id.editPrice);
 
 
-        categorySpinner = getActivity().findViewById(R.id.categorySpinner);
+        categorySpinner = rootView.findViewById(R.id.categorySpinner);
 
-        editDate = getActivity().findViewById(R.id.editDate);
+        editDate = rootView.findViewById(R.id.editDate);
 
 
         btnTagCamera = rootView.findViewById(R.id.btnTagCamera);
         btnTagCamera.setOnClickListener(tagListener);
 
-
         btnAddTrans = rootView.findViewById(R.id.btnAddTrans);
         btnAddTrans.setOnClickListener(addTransListener);
 
+        // receive tag value from AddTransactionCamerFragment
+        Bundle getBundle = getArguments();
+        String getTag = getBundle.getString("tag");
 
-        //        editPrice.setInputType(InputType.TYPE_CLASS_NUMBER | InputType.TYPE_NUMBER_VARIATION_PASSWORD);
-        //        editPrice.setTransformationMethod(new NumericKeyBoardTransformationMethod());
+        // add tag value to editTag
+        if (getTag != null) {
+            editTag.setText(getTag);
+        }
 
-        //        editDate.setInputType(InputType.TYPE_CLASS_DATETIME);
-
-//        String greeting = (savedInstanceState != null) ? savedInstanceState.getString("greeting") : "null";
-//        Log.d(TAG, " onCreateView: " + greeting);
-
+        editDate.setInputType(InputType.TYPE_CLASS_DATETIME);
 
         return rootView;
     }
 
-
-
-    private class NumericKeyBoardTransformationMethod extends PasswordTransformationMethod {
-        @Override
-        public CharSequence getTransformation(CharSequence source, View view) {
-            return source;
-        }
-    }
-
-
-
-//    // TAG, PRICE, CATEGORY, DATE (+ AUTOGEN ID) -INJECTOR MAKEN
-
     @Override
-    public void onSaveInstanceState(Bundle savedInstanceState) {
-        super.onSaveInstanceState(savedInstanceState);
-        Log.d(TAG, " onSaveInstanceState");
-        savedInstanceState.putString("greeting", "hello");
-        System.out.println("onSaveInstanceState: hello");
-    }
-
-    @Override
-    public void onViewStateRestored(Bundle savedInstanceState) {
-        super.onViewStateRestored(savedInstanceState);
-        String greeting = (savedInstanceState != null) ? savedInstanceState.getString("greeting") : "null";
-        Log.d(TAG,  "onViewStateRestored: " + greeting);
-
-        System.out.println("onViewStateRestored: " + greeting);
-    }
-
-
-
-
-
-
-
-    @Override
-    public void takeScreenShot() {
-
-    }
+    public void takeScreenShot() {}
 
     @Override
     public Bitmap getBitmap() {
         return null;
     }
 
+    // clickListener for tag-camera-button: redirects user to addTransactionCameraFragment
     public View.OnClickListener tagListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-
-            Log.d("CLICK", "btnTagCamera");
-
-//            getActivity().savedInstanceState.putString("cameraFor", cameraFor);
-
             replaceAddTransactionCameraFragment();
         }
     };
 
-
-    // ADD INPUT DATA TO SQLDB
-        // DATABASE MAKEN
-        // TAG, PRICE, CATEGORY, DATE (+ AUTOGEN ID) -INJECTOR MAKEN
-        // INJECTOR AANROEPEN IN ADDTRANSLISTENER + RETURN TO TRANSACTIONFRAGMENT (DATA OP TRANSACTTIONFRAGMENT VERVERSEN
-        //
+    // clickListener voor add-knop: adds entry + redirects user to transactionsFragment
     public View.OnClickListener addTransListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-//            addTransactionEntry();
+            addTransactionEntry();
 
-//            getActivity().setContentView(R.layout.fragment_transactions);
-//            replaceAddTransactionCameraFragment();
-//            TransactionsFragment transactionsFragment = (TransactionsFragment) getActivity().getSupportFragmentManager().findFragmentByTag("transactions");
+            TransactionsFragment transactionsFragment = new TransactionsFragment();
 
-            getActivity().onBackPressed();
-
-
-
-            // ADD TAG TO DB
-            // ADD PRICE TO DB
-            // ADD CATEGORY TO DB
-            // ADD DAT TO DB
-
-            //(UPDATE TRANSACTION FRAGMENT --> LIST)
-            // OPEN TRANSACTION FRAGMENT
-
-//            addTransactionEntry();
+                getFragmentManager().beginTransaction()
+                    .replace(R.id.content_frame, transactionsFragment, "TRANS")
+                    .addToBackStack(null).commit();
         }
     };
 
-
-
-
+    // adds the data input from the user to the sql-database and sets the text of
     public void addTransactionEntry() {
-
         String tagString = editTag.getText().toString();
-        CharSequence priceChars = editPrice.getText();
+        CharSequence priceChars = editPrice.getText().toString();
         String categorySpinnerString = categorySpinner.toString();
-//        CharSequence dateChars = editDate.getText();
-
 
         TransactionEntry entry = new TransactionEntry(tagString, priceChars, categorySpinnerString);
         Database db = Database.getDatabase(getActivity().getBaseContext());
         db.insert(entry);
 
         editTag.setText("");
-        editPrice.setText("");
-
     }
 
-    // OPEN TAG-CAMERA FRAGMENT
+    // redirects the user to the camera-fragment
     private ScreenShotable replaceAddTransactionCameraFragment() {
         View view = getActivity().findViewById(R.id.content_frame);
         int finalRadius = Math.max(view.getWidth(), view.getHeight());
         SupportAnimator animator = ViewAnimationUtils.createCircularReveal(view, 0, 0, 0, finalRadius);
         animator.setInterpolator(new AccelerateInterpolator());
         animator.setDuration(ViewAnimator.CIRCULAR_REVEAL_ANIMATION_DURATION);
-
         animator.start();
-        AddTransactionCameraFragment addTransactionCameraFragment = new AddTransactionCameraFragment();
 
-        addTransactionCameraFragment.setArguments(cameraForBundle);
+        AddTransactionCameraFragment addTransactionCameraFragment = new AddTransactionCameraFragment();
         getActivity().getSupportFragmentManager().beginTransaction()
                 .replace(R.id.content_frame, addTransactionCameraFragment).addToBackStack(null)
                 .commit();
 
-
         return addTransactionCameraFragment;
     }
-
-
-//    public ScreenShotable replaceAddTransactionFragment() {
-//        View view = getActivity().findViewById(R.id.content_frame);
-//        int finalRadius = Math.max(view.getWidth(), view.getHeight());
-//        SupportAnimator animator = ViewAnimationUtils.createCircularReveal(view, 0, 0, 0, finalRadius);
-//        animator.setInterpolator(new AccelerateInterpolator());
-//        animator.setDuration(ViewAnimator.CIRCULAR_REVEAL_ANIMATION_DURATION);
-//
-//        animator.start();
-//        AddTransactionFragment addTransactionFragment = new AddTransactionFragment();
-//        getActivity().getSupportFragmentManager().beginTransaction()
-//                .replace(R.id.content_frame, addTransactionFragment, "ADDTRANS").addToBackStack(null).commit();
-//        return addTransactionFragment;
-//    }
-
 }

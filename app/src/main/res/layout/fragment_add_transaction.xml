@@ -46,7 +46,7 @@
             android:ems="10"
             android:freezesText="true"
             android:hint="Click to edit.."
-            android:inputType="text"
+            android:inputType="numberDecimal"
             android:textColorHint="@android:color/white"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/editTag" />

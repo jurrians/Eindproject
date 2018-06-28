@@ -12,7 +12,6 @@ public class EntryAdapter extends ResourceCursorAdapter {
         super(context, R.layout.transaction_entry_row, c);
     }
 
-
     @Override
     public void bindView(View view, Context context, Cursor c) {
 
@@ -37,8 +36,5 @@ public class EntryAdapter extends ResourceCursorAdapter {
         TextView textViewDate = view.findViewById(R.id.dateTransList);
         String date = c.getString(c.getColumnIndex(Database.columnDate));
         textViewDate.setText(date);
-
     }
-
-
 }

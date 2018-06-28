@@ -19,10 +19,7 @@ import yalantis.com.sidemenu.interfaces.ScreenShotable;
 
 public class AddCategoryFragment extends Fragment implements ScreenShotable{
 
-    private View containerView;
-    protected ImageView mImageView;
     protected int res;
-    private Bitmap bitmap;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,

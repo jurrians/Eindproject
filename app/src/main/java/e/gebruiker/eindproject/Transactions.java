@@ -23,11 +23,6 @@ public class Transactions {
     public List<Transaction> transactionList;
 
 
-    // TRANSACTIONREQUEST request transactions as JSON from ING API
-    private JsonObjectRequest jsonObjectRequest() {
-        return jsonObjectRequest();
-    }
-
     // construct transactionObject from requested data
     private void transactionConstructor() {
 

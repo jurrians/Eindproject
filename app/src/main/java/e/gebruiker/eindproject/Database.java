@@ -8,7 +8,6 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 public class Database extends SQLiteOpenHelper {
 
-    //    // TAG, PRICE, CATEGORY, DATE (+ AUTOGEN ID) -INJECTOR MAKEn
     private static Database database;
 
     private static int dbVersion = 1;
@@ -24,13 +23,7 @@ public class Database extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         db.execSQL("CREATE TABLE IF NOT EXISTS transactions( _id INTEGER PRIMARY KEY AUTOINCREMENT, " +
                 "tag TEXT, price TEXT, category TEXT, date DATETIME DEFAULT CURRENT_TIMESTAMP)");
-
-        // TEST INPUT HERE
-
-
     }
-
-
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
@@ -38,11 +31,13 @@ public class Database extends SQLiteOpenHelper {
         onCreate(db);
     }
 
+    // get cursor for transaction-data
     public Cursor selectAll() {
         Cursor cursor = database.getWritableDatabase().rawQuery("SELECT * FROM transactions", null );
         return cursor;
     }
 
+    // insert data into sql-database
     public static void insert(TransactionEntry entry) {
         SQLiteDatabase db = database.getWritableDatabase();
 
@@ -58,6 +53,7 @@ public class Database extends SQLiteOpenHelper {
         super(context, dbName, null, dbVersion);
     }
 
+    // get data from sql-database
     public static Database getDatabase(Context context) {
         if (database == null) {
             database = new Database(context);
