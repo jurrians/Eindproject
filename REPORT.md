@@ -71,36 +71,55 @@ de transactie wordt toegevoegd aan de lijst.
 #### MainActivity & UserFragment
 
 Hoewel de app gebruik maakt van fragments, heeft de app één Activity om deze fragments mogelijk te maken: de MainActivity. 
-Binnen deze activity staat de code die het geanimeerde side-menu mogelijk maakt.
+Binnen deze activity staat de code die het geanimeerde side-menu mogelijk maakt. Hier worden (middels 'createMenuList()') de
+verschillende items in het side-menu gedefiniëerd en toegevoegd aan de item-list van het menu. De functie 'setActionBar()' 
+kan gezien worden als de motor van het side-menu; deze functie regelt het openen en het sluiten van het menu. 
 
-	XXX 
+Wanneer er op een keuze-optie binnen het menu wordt geklikt, wordt de 'onSwitch()' methode gebruikt om te bepalen welke 
+fragment geopend moet worden. Binnen de onSwitch() wordt vervolgens de relevante 'replace-X-Fragment()' functie aangeroepen,
+welke de desbetreffende fragment opent. 
 
-- Ook staan hierbinnen de replaceFragment()- functies voor de fragments toegangkelijk via het menu. 
-	
-	--> UserFragment.NewInstance()
-
+In tegenstelling tot (de meeste) andere fragments, wordt UserFragment niet aangeroepen met een 'normale' replaceFragment-functie, 
+maar wordt er in de onCreate() van de MainActivity een Userfragment.newInstance() aangemaakt. Deze wordt hier aangemaakt zodat 
+er savedState's bijgehouden kunnen worden. Aangezien de overige fragments die binnen het side-menu vallen in de onSwitch() via 
+deze Userfragment lopen (e.g. UserFragment.BALANCE), is het niet nodig om verdere onSaveInstanceState's etc. aan te maken voor deze
+fragments. 
 
 #### TransactionsFragment
 
-- .newInstance
-- aanroepen adapter & database
-- replaceAddTransactionFragment
+Vanuit het side-menu kom je, wanneer je op de onderste knop klikt, op de TransactionsFragment uit. Evenals bij de UserFragment, wordt 
+hiervoor een '.newInstance()' gebruikt i.p.v. een 'normale' replaceFragment-functie. Dit is gedaan omdat er vanuit de TransactionsFragment
+genavigeerd kan worden naar de AddTransactionFragment (en vanuit daar naar de AddTransactionCameraFragment), welke, aangezien deze niet 
+aangeroepen worden via de MainActivity/UserFragment, anders geen informatie zouden kunnen behouden na het wisselen van Fragments. 
+In de TransactionsFragment is een listview te zien met daarin de verschillende transacties van de gebruiker. Om in deze lijst de transacties
+te weergeven, worden in de 'onCreateView()' de ListviewAdapter en de database welke de adapter gebruikt aangeroepen. Hierover later meer. 
 
+Om data toe te voegen aan deze lijst, kan er geklikt worden op een knop rechtsonderaan het scherm. Deze knop stuurt de gebruiker door naar
+de AddTransactionFragment, waar nieuwe data ingevoerd kan worden. Hier wordt wederom een .newInstance() gebruikt, aangezien er data tijdens
+de sessie bewaard moet blijven. 
 
+#### AddTransactionFragment & TransactionEntry.java
 
+In de AddTransactionFragment kan de gebruiker een nieuwe transactie toevoegen. De door de gebruiker ingevoerde data (Tag, Price, Category)
+wordt bij het klikken op de grote ronde knop onderaan het scherm tot een TransactionEntry-object gemaakt. 
+Deze data wordt d.m.v. addTransactionEntry() van de editTexts verzameld, tot TransactionEntry-object gemaakt en 
+toegevoegd aan de database, waar er automatisch een datum en tijd aan gekoppeld wordt. Het TransactionEntry-object wordt aangemaakt
+d.m.v. een constructor, welke te vinden is in TransactionEntry.java. Tot slot wordt de gebruiker terugverwezen naar de TransactionsFragment,
+waar de listView geupdate wordt met de zojuist ingevoerde transactie. 
 
-#### Database.java & TransactionEntry.java
+Naast handmatig invoeren van de Tag kan de gebruiker er ook voor kiezen om een foto te gebruiken welke de app gebruikt om een tag te maken.
+Om dit te doen, klikt de gebruiker op de camera-knop naast de Tag-editText. Vanuit hier wordt de gebruiker doorverwezen naar de 
+AddTransactionCameraFragment. Ook hier wordt een nieuwe instance voor aangemaakt. 
 
-- SQL-database 'database' aangemaakt (als deze nog niet bestaat)
-- selectAll() maakt cursor voor EntryAdapter
-- insert() TransacionEntry
+#### Database.java & EntryAdapter.java
 
-#### AddTransactionFragment
-- .NewInstance
-- in onCreateView(): check of tag in bundle, zoja: zet string van bundle in editTag (Afkomstig van addtranscamerafrag)
-- AddTransactionEntry(): haal text van editTexts etc., maak TransactionEntry object aan en voeg deze toe in de database.
-- replaceAddTransactionCameraFragment
+Zoals hierboven al vermeld wordt, wordt er in de TransactionsFragment gebruik gemaakt van een SQL-database en een adapter. 
+De database zelf en de functies die voor de database gebruikt worden zijn te vinden in Database.java: een Database-constructor,
+een insert()- functie om data toe te voegen aan de SQL-database, een getter (getDatabase) om de data uit de database op te vragen
+vanuit andere fragments en een selectAll() functie, welke een cursor aanmaakt voor de EntryAdapter. 
 
+De EntryAdapter-class, welke wordt gebruikt in de TransactionsFragment, bestaat uit de EntryAdapter-constructor en de bindView() functie, 
+welke de waarden uit de database koppelt aan de individuele textViews binnen iedere rij. 
 
 #### AddTransactionCameraFragment
 - dispatchTakePictureIntent()
