@@ -66,10 +66,51 @@ de transactie wordt toegevoegd aan de lijst.
 ![](doc/addtransactionfragment.png)
 ![](doc/addtransactioncamerafragment.png)
 
-
-
-
 ### Detailed overview
+
+#### MainActivity & UserFragment
+
+Hoewel de app gebruik maakt van fragments, heeft de app één Activity om deze fragments mogelijk te maken: de MainActivity. 
+Binnen deze activity staat de code die het geanimeerde side-menu mogelijk maakt.
+
+	XXX 
+
+- Ook staan hierbinnen de replaceFragment()- functies voor de fragments toegangkelijk via het menu. 
+	
+	--> UserFragment.NewInstance()
+
+
+#### TransactionsFragment
+
+- .newInstance
+- aanroepen adapter & database
+- replaceAddTransactionFragment
+
+
+
+
+#### Database.java & TransactionEntry.java
+
+- SQL-database 'database' aangemaakt (als deze nog niet bestaat)
+- selectAll() maakt cursor voor EntryAdapter
+- insert() TransacionEntry
+
+#### AddTransactionFragment
+- .NewInstance
+- in onCreateView(): check of tag in bundle, zoja: zet string van bundle in editTag (Afkomstig van addtranscamerafrag)
+- AddTransactionEntry(): haal text van editTexts etc., maak TransactionEntry object aan en voeg deze toe in de database.
+- replaceAddTransactionCameraFragment
+
+
+#### AddTransactionCameraFragment
+- dispatchTakePictureIntent()
+- bij klikken op add: nieuwe bundle aangemaakt met daarin de gegenereerde tag, geef deze door aan addtransactionFragment
+
+- detectTxt()
+- processTxt()
+
+
+
 
 ## Challenges during development
 
