@@ -1,5 +1,6 @@
 package e.gebruiker.eindproject.fragment;
 
+import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.os.Bundle;
@@ -13,9 +14,11 @@ import android.view.ViewGroup;
 import android.view.animation.AccelerateInterpolator;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.ListView;
 
 
-
+import e.gebruiker.eindproject.Database;
+import e.gebruiker.eindproject.EntryAdapter;
 import e.gebruiker.eindproject.R;
 
 import io.codetail.animation.SupportAnimator;
@@ -30,7 +33,34 @@ public class TransactionsFragment extends Fragment implements ScreenShotable{
     protected int res;
     private Bitmap bitmap;
 
+//    public TransactionsFragment transactionsFragment;
 
+
+    Database db;
+    EntryAdapter adapter;
+    ListView listView;
+
+
+    public static TransactionsFragment newInstance(int resId) {
+        TransactionsFragment transactionsFragment = new TransactionsFragment();
+        Bundle bundle = new Bundle();
+        bundle.putInt(Integer.class.getName(), resId);
+        transactionsFragment.setArguments(bundle);
+        return transactionsFragment;
+    }
+
+    @Override
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        this.containerView = view.findViewById(R.id.container);
+    }
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        res = getArguments().getInt(Integer.class.getName());
+
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -40,7 +70,29 @@ public class TransactionsFragment extends Fragment implements ScreenShotable{
         final ImageButton addTransactionButton = rootView.findViewById(R.id.buttonAddTransaction);
         addTransactionButton.setOnClickListener(addTransactionListener);
 
+        listView = rootView.findViewById(R.id.transListView);
+
+        db = Database.getDatabase(getActivity().getApplicationContext());
+        Cursor cursor = db.selectAll();
+
+        adapter = new EntryAdapter(getContext(), cursor);
+        listView.setAdapter(adapter);
+
+        // set clicklisteners
         return rootView;
+    }
+
+
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        updateData();
+    }
+
+    private void updateData() {
+        Cursor cursor = db.selectAll();
+        adapter.swapCursor(cursor);
     }
 
 
@@ -69,13 +121,15 @@ public class TransactionsFragment extends Fragment implements ScreenShotable{
         SupportAnimator animator = ViewAnimationUtils.createCircularReveal(view, 0, 0, 0, finalRadius);
         animator.setInterpolator(new AccelerateInterpolator());
         animator.setDuration(ViewAnimator.CIRCULAR_REVEAL_ANIMATION_DURATION);
-
         animator.start();
+
         AddTransactionFragment addTransactionFragment = new AddTransactionFragment();
         getActivity().getSupportFragmentManager().beginTransaction().add(R.id.content_frame, addTransactionFragment, "ADDTRANS")
-                .replace(R.id.content_frame, addTransactionFragment).addToBackStack(null).commit();
+                .replace(R.id.content_frame, addTransactionFragment, "ADDTRANS").addToBackStack(null).commit();
         return addTransactionFragment;
     }
+
+
 
 
 }

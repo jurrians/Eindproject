@@ -19,13 +19,14 @@ tools:context="e.gebruiker.eindproject.MainActivity">
     app:layout_constraintStart_toEndOf="@+id/transactionsImage"
     app:layout_constraintTop_toTopOf="parent" />
 
-<ListView
-    android:layout_width="match_parent"
-    android:layout_height="474dp"
-    app:layout_constraintBottom_toBottomOf="parent"
-    app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintHorizontal_bias="0.0"
-    app:layout_constraintStart_toStartOf="parent" />
+    <ListView
+        android:id="@+id/transListView"
+        android:layout_width="match_parent"
+        android:layout_height="474dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent" />
 
 <ImageView
     android:id="@+id/mainTransactionCircle"
@@ -60,26 +61,26 @@ tools:context="e.gebruiker.eindproject.MainActivity">
     app:layout_constraintStart_toStartOf="@+id/mainTransactionCircle"
     app:layout_constraintTop_toTopOf="@+id/mainTransactionCircle" />
 
-<TextView
-    android:id="@+id/textTransactionsTotOut"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_marginTop="8dp"
-    android:text="-€150,00"
-    android:textColor="@android:color/holo_red_light"
-    android:textStyle="bold"
-    app:layout_constraintEnd_toStartOf="@+id/mainTransactionCircle"
-    app:layout_constraintTop_toBottomOf="@+id/leftTransactionBar" />
+<!--<TextView-->
+    <!--android:id="@+id/textTransactionsTotOut"-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_marginTop="8dp"-->
+    <!--android:text="-€150,00"-->
+    <!--android:textColor="@android:color/holo_red_light"-->
+    <!--android:textStyle="bold"-->
+    <!--app:layout_constraintEnd_toStartOf="@+id/mainTransactionCircle"-->
+    <!--app:layout_constraintTop_toBottomOf="@+id/leftTransactionBar" />-->
 
-<TextView
-    android:id="@+id/textTransactionsTotIn"
-    android:layout_width="wrap_content"
-    android:layout_height="15dp"
-    android:layout_marginTop="8dp"
-    android:text="€1200,00"
-    android:textColor="@android:color/holo_green_light"
-    app:layout_constraintStart_toEndOf="@+id/mainTransactionCircle"
-    app:layout_constraintTop_toBottomOf="@+id/rightTransactionBar" />
+<!--<TextView-->
+    <!--android:id="@+id/textTransactionsTotIn"-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="15dp"-->
+    <!--android:layout_marginTop="8dp"-->
+    <!--android:text="€1200,00"-->
+    <!--android:textColor="@android:color/holo_green_light"-->
+    <!--app:layout_constraintStart_toEndOf="@+id/mainTransactionCircle"-->
+    <!--app:layout_constraintTop_toBottomOf="@+id/rightTransactionBar" />-->
 
 <ImageButton
     android:id="@+id/buttonAddTransaction"

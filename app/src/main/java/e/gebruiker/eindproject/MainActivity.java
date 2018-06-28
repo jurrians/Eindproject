@@ -3,6 +3,7 @@ package e.gebruiker.eindproject;
 import android.Manifest;
 import android.content.pm.PackageManager;
 import android.content.res.Configuration;
+import android.database.Cursor;
 import android.graphics.Color;
 import android.media.Image;
 import android.os.Bundle;
@@ -24,6 +25,7 @@ import android.view.animation.AccelerateInterpolator;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
+import android.widget.ListView;
 import android.widget.TextView;
 
 
@@ -55,7 +57,19 @@ public class MainActivity extends AppCompatActivity implements ViewAnimator.View
     private ViewAnimator viewAnimator;
     private LinearLayout linearLayout;
 
-    public String cameraFor;
+
+    private TransactionsFragment transactionsFragment;
+
+
+//    private ImageButton addTransactionButton;
+
+//    private Database db;
+//    private EntryAdapter adapter;
+//    private ListView listView;
+
+
+
+
 
 //    public ImageButton btnAddTransactionCamera= findViewById(R.id.btnTagCamera);
 //
@@ -65,7 +79,7 @@ public class MainActivity extends AppCompatActivity implements ViewAnimator.View
 //
 //    ImageButton snapBtn = (ImageButton) findViewById(R.id.snapBtn);
 //    public ImageButton addTransBtn = findViewById(R.id.addTranstBtn);
-
+        
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -78,9 +92,9 @@ public class MainActivity extends AppCompatActivity implements ViewAnimator.View
                 .commit();
 
 
-        drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
+        drawerLayout = findViewById(R.id.drawer_layout);
         drawerLayout.setScrimColor(Color.TRANSPARENT);
-        linearLayout = (LinearLayout) findViewById(R.id.left_drawer);
+        linearLayout = findViewById(R.id.left_drawer);
         linearLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -95,6 +109,29 @@ public class MainActivity extends AppCompatActivity implements ViewAnimator.View
     }
 
 
+
+
+//    @Override
+//    public void onResume() {
+//        super.onResume();
+//        updateData();
+//    }
+//
+//    private void updateData() {
+//        Cursor cursor = db.selectAll();
+//        adapter.swapCursor(cursor);
+//    }
+//
+//    View.OnClickListener addTransactionListener = new View.OnClickListener() {
+//        @Override
+//        public void onClick(View view) {
+//            replaceAddTransactionFragment();
+//        }
+//    };
+
+
+
+
     @Override
     public void onBackPressed() {
         if (getSupportFragmentManager().getBackStackEntryCount() != 0) {
@@ -103,8 +140,6 @@ public class MainActivity extends AppCompatActivity implements ViewAnimator.View
             super.onBackPressed();
         }
     }
-
-
 
 
 
@@ -127,7 +162,7 @@ public class MainActivity extends AppCompatActivity implements ViewAnimator.View
 
 
     private void setActionBar() {
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setHomeButtonEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -243,9 +278,17 @@ public class MainActivity extends AppCompatActivity implements ViewAnimator.View
         animator.setDuration(ViewAnimator.CIRCULAR_REVEAL_ANIMATION_DURATION);
 
         animator.start();
-        TransactionsFragment transactionsFragment = new TransactionsFragment();
+//        TransactionsFragment transactionsFragment = new TransactionsFragment();
+
+        transactionsFragment = TransactionsFragment.newInstance(R.layout.fragment_transactions);
         getSupportFragmentManager().beginTransaction()
-                .replace(R.id.content_frame, transactionsFragment).addToBackStack(null).commit();
+                .replace(R.id.content_frame, transactionsFragment).addToBackStack(null)
+                .commit();
+
+
+
+//        getSupportFragmentManager().beginTransaction()
+//                .replace(R.id.content_frame, transactionsFragment).addToBackStack(null).commit();
         return transactionsFragment;
     }
 
@@ -278,6 +321,38 @@ public class MainActivity extends AppCompatActivity implements ViewAnimator.View
                 .replace(R.id.content_frame, priorityFragment).addToBackStack(null).commit();
         return priorityFragment;
     }
+
+
+
+//    public ScreenShotable replaceAddTransactionFragment() {
+//        View view = findViewById(R.id.content_frame);
+//        int finalRadius = Math.max(view.getWidth(), view.getHeight());
+//        SupportAnimator animator = ViewAnimationUtils.createCircularReveal(view, 0, 0, 0, finalRadius);
+//        animator.setInterpolator(new AccelerateInterpolator());
+//        animator.setDuration(ViewAnimator.CIRCULAR_REVEAL_ANIMATION_DURATION);
+//        animator.start();
+//
+//        AddTransactionFragment addTransactionFragment = new AddTransactionFragment();
+//        getSupportFragmentManager().beginTransaction()
+//                .replace(R.id.content_frame, addTransactionFragment).addToBackStack(null).commit();
+//
+//        addTransactionButton = findViewById(R.id.buttonAddTransaction);
+//        addTransactionButton.setOnClickListener(addTransactionListener);
+//
+//        listView = findViewById(R.id.transListView);
+//
+//        db = Database.getDatabase(getApplicationContext());
+//        Cursor cursor = db.selectAll();
+//
+//        adapter = new EntryAdapter(this, cursor);
+//        listView.setAdapter(adapter);
+//
+//        return addTransactionFragment;
+//    }
+
+
+
+
 
 
 

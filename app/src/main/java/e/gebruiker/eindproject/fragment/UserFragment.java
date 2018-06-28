@@ -46,7 +46,7 @@ public class UserFragment extends Fragment implements ScreenShotable{
         return userFragment;
     }
 //
-//
+
 //
 //    @Override
 //    public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -104,6 +104,8 @@ public class UserFragment extends Fragment implements ScreenShotable{
                 UserFragment.this.bitmap = bitmap;
             }
         };
+
+
 
         thread.start();
 

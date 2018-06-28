@@ -125,3 +125,14 @@ door elementen uit niet werkende deel --> app doet het weer!
 # day 16 ma
 - google vision werkend gekregen
 - nieuwe fragments gemaakt
+
+day 17 di
+- hele dag bezig geweest met bug waardoor app crashde bij onBackClick()
+    + na maken foto waren alle buttons plotseling niet meer clickbaar
+   --> nog geen oplossing gevonden
+
+
+day 18 wo
+- bezig geweest met zelfde bug als gisteren
+- sqlDB + benodigdheden geschreven voor addTransactions
+- bug grotendeels opgelost, maar oa bug onstaan waardoor het zetten van de editText na gebruik camera niet meer werkt.

@@ -35,16 +35,6 @@ public class BalanceFragment extends Fragment implements ScreenShotable{
                              Bundle savedInstanceState) {
         final View rootView = inflater.inflate(R.layout.fragment_balance, container, false);
 
-//        final FloatingActionButton addCategoryButton = (FloatingActionButton) rootView.findViewById(R.id.floatingBalanceButton);
-//
-//        addCategoryButton.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Log.d("click", "click");
-//                replaceAddCategoryFragment();
-//            }
-//        });
-
         return rootView;
     }
 
