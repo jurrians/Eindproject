@@ -20,13 +20,13 @@ Jurrian Schreuder (11053542)
 	Een app die je uitgaven structureert a.d.h.v. ingevoerde transacties, waarbij je namen van transacties kan toevoegen met behulp van een image-to-text API (Google Vision).
 
 ### Screenshots: 
-	![](userfragment_menu.png)
-	![](doc/balancefragment.PNG)
-	![](doc/incomefragment.PNG)
-	![](doc/priorityfragment.PNG)
-	![Alt text](doc/transactionfragment.PNG)
-	![Alt text](doc/addtransactionfragment.PNG)
-	![Alt text](doc/addtransactioncamerafragment.PNG)
+![](doc/userfragment_menu.png)
+![](doc/balancefragment.png)
+![](doc/incomefragment.png)
+![](doc/priorityfragment.png)
+![](doc/transactionfragment.png)
+![](doc/addtransactionfragment.png)
+![](doc/addtransactioncamerafragment.png)
 
 ## Main features
 	
