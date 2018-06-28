@@ -3,6 +3,18 @@
 
 ## App description
 
+## Technical design
+### High level overview
+### Detailed overview
+
+## Challenges during development
+
+### Why did I make changes in my app-design?
+### Trade-offs with current solution
+### What would I have done differently?
+
+
+
 ____________
 
 TODO:
